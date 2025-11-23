@@ -1,4 +1,5 @@
 *.pth
-acappella
+data/acappella
 *.abc
 *.xml
+*.mscz
