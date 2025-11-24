@@ -1,17 +1,26 @@
+import os
 import json
 import torch
 from torch.utils.data import Dataset
-import config
-from data.tokenizer import Patchilizer  # 假设你已经搬运好了
+from data.tokenizer import Patchilizer
 
 
-class PiCoGenDataset(Dataset):
-    def __init__(self, jsonl_file):
+class SymphonyDataset(Dataset):
+    def __init__(self, jsonl_path, patch_len=1024):
         self.data = []
-        with open(jsonl_file, 'r') as f:
-            for line in f:
-                self.data.append(json.loads(line))
         self.patchilizer = Patchilizer()
+        self.patch_len = patch_len
+
+        if not os.path.exists(jsonl_path):
+            raise FileNotFoundError(f"Index file not found: {jsonl_path}")
+
+        with open(jsonl_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                try:
+                    self.data.append(json.loads(line))
+                except:
+                    pass
+        print(f"[Dataset] Loaded {len(self.data)} samples from {jsonl_path}")
 
     def __len__(self):
         return len(self.data)
@@ -19,40 +28,21 @@ class PiCoGenDataset(Dataset):
     def __getitem__(self, idx):
         item = self.data[idx]
         try:
+            # 这里的 path 是绝对路径，或者相对于项目根目录的路径
             with open(item['path'], 'r', encoding='utf-8') as f:
-                abc_text = f.read()
-
-            # 使用 Patchilizer 编码 (调用 encode_train)
-            # 注意：这里仅作为示例，具体调用参数需参考原 utils.py
-            patches = self.patchilizer.encode_train(abc_text, patch_length=config.PATCH_LENGTH)
-
-            # 转换为 Tensor
-            patches_tensor = torch.tensor(patches, dtype=torch.long)
-            masks_tensor = torch.ones(len(patches), dtype=torch.long)
-            inst_id_tensor = torch.tensor(item['inst_id'], dtype=torch.long)
-
-            return {
-                "patches": patches_tensor,
-                "masks": masks_tensor,
-                "inst_ids": inst_id_tensor
-            }
+                text = f.read()
+            patches = self.patchilizer.encode_train(text, patch_length=self.patch_len)
+            patches = torch.tensor(patches, dtype=torch.long)
+            masks = torch.ones(len(patches), dtype=torch.long)
+            return patches, masks
         except Exception as e:
-            print(f"Error loading {item['path']}: {e}")
-            # 返回一个 dummy 数据防止报错
-            return self.__getitem__((idx + 1) % len(self.data))
+            print(f"Error loading {item.get('path', 'unknown')}: {e}")
+            # Fallback
+            return torch.randint(0, 128, (self.patch_len,)), torch.ones(self.patch_len)
 
 
 def collate_fn(batch):
-    # 简单 Padding
-    patches = [item['patches'] for item in batch]
-    masks = [item['masks'] for item in batch]
-    inst_ids = torch.stack([item['inst_ids'] for item in batch])
-
-    patches_padded = torch.nn.utils.rnn.pad_sequence(patches, batch_first=True, padding_value=0)
-    masks_padded = torch.nn.utils.rnn.pad_sequence(masks, batch_first=True, padding_value=0)
-
-    return {
-        "patches": patches_padded,
-        "masks": masks_padded,
-        "inst_ids": inst_ids
-    }
+    patches, masks = zip(*batch)
+    patches = torch.nn.utils.rnn.pad_sequence(patches, batch_first=True, padding_value=0)
+    masks = torch.nn.utils.rnn.pad_sequence(masks, batch_first=True, padding_value=0)
+    return patches, masks

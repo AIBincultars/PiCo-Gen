@@ -1,39 +1,50 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import config
 
 
 class PhysicsAwareLoss(nn.Module):
-    def __init__(self):
+    """
+    Based on 'Goal Orientation in Music Composition...'.
+    Enforces Power Law distribution via Smoothness Constraint and Entropy Maximization.
+    """
+
+    def __init__(self, lambda_smooth=0.5, lambda_entropy=0.1):
         super().__init__()
-        self.scale_phy = config.GAMMA_PHYSICS
-        self.scale_ent = config.LAMBDA_ENTROPY
+        self.lambda_smooth = lambda_smooth
+        self.lambda_entropy = lambda_entropy
 
     def forward(self, logits, teacher_logits=None):
-        probs = F.softmax(logits, dim=-1)
+        # logits: [B, S, V]
+        probs = F.softmax(logits, dim=-1) + 1e-9
         vocab_size = logits.size(-1)
-        pitch_vals = torch.arange(vocab_size, device=logits.device).float()
 
-        # 1. 计算平滑度 (Smoothness Constraint)
-        expected_pitch = torch.sum(probs * pitch_vals, dim=-1)
+        # Differentiable Expected Pitch
+        pitch_vals = torch.arange(vocab_size, device=logits.device).float()
+        expected_pitch = torch.sum(probs * pitch_vals, dim=-1)  # [B, S]
+
+        # Melodic Intervals
         intervals = torch.abs(expected_pitch[:, 1:] - expected_pitch[:, :-1])
-        current_mean = intervals.mean()
+        intervals = torch.clamp(intervals, min=1.0)
+
+        # 1. Smoothness Constraint
+        log_intervals = torch.log(intervals)
+        smoothness_stat = log_intervals.mean()
 
         if teacher_logits is not None:
             with torch.no_grad():
                 t_probs = F.softmax(teacher_logits, dim=-1)
                 t_pitch = torch.sum(t_probs * pitch_vals, dim=-1)
-                t_int = torch.abs(t_pitch[:, 1:] - t_pitch[:, :-1])
-                target_mean = t_int.mean()
+                t_intervals = torch.abs(t_pitch[:, 1:] - t_pitch[:, :-1]).clamp(min=1.0)
+                target_smoothness = torch.log(t_intervals).mean()
+            loss_smooth = F.mse_loss(smoothness_stat, target_smoothness)
         else:
-            target_mean = torch.tensor(2.5, device=logits.device)  # 经验值
+            # Empirical constant s0 approx 2.5
+            loss_smooth = torch.abs(smoothness_stat - 2.5)
 
-        loss_smooth = F.mse_loss(current_mean, target_mean)
+        # 2. Entropy Maximization
+        entropy = -torch.sum(probs * torch.log(probs), dim=-1).mean()
+        loss_entropy = -entropy
 
-        # 2. 计算熵 (Entropy Maximization Objective)
-        # H = -sum(p * log p)
-        entropy = -torch.sum(probs * torch.log(probs + 1e-9), dim=-1).mean()
-
-        # Loss = Smooth_Error - lambda * Entropy (Max Entropy -> Min -Entropy)
-        return self.scale_phy * loss_smooth - self.scale_ent * entropy
+        total_loss = self.lambda_smooth * loss_smooth + self.lambda_entropy * loss_entropy
+        return total_loss, {"L_phy_sm": loss_smooth.item(), "L_phy_ent": loss_entropy.item()}

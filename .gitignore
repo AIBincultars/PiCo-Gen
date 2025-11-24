@@ -1,5 +1,6 @@
 *.pth
-.data/acappella
+/data/raw/*
+!/data/raw/.gitkeep
 *.abc
 *.xml
 *.mscz
