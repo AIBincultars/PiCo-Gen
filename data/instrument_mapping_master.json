@@ -1,0 +1,2301 @@
+{
+    "PROG_44": {
+        "frequency": 142036,
+        "gm_description": "Tremolo Strings",
+        "target_xml_name": "Tremolo Strings",
+        "target_xml_abbr": "Trem.",
+        "top_track_names": [
+            "Viola (14)",
+            "Violin I (9)",
+            "Violin II (8)",
+            "Viole (8)",
+            "Violini I (8)"
+        ],
+        "example_files": [
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_3_(c)pajares.mid",
+            "classical/arriaga_symphony_1_3_(c)pajares.mid",
+            "classical/barber_violin_concerto_1_(c)siu.mid",
+            "classical/barber_violin_concerto_1_(c)siu.mid"
+        ]
+    },
+    "PROG_45": {
+        "frequency": 131516,
+        "gm_description": "Pizzicato Strings",
+        "target_xml_name": "Pizzicato Strings",
+        "target_xml_abbr": "Pizz.",
+        "top_track_names": [
+            "Viola (162)",
+            "Violoncelle (77)",
+            "Contrabasse (74)",
+            "Cello (67)",
+            "Violine II (65)"
+        ],
+        "example_files": [
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid"
+        ]
+    },
+    "DRUM": {
+        "frequency": 81697,
+        "gm_description": "Percussion (Channel 10)",
+        "target_xml_name": "Percussion",
+        "target_xml_abbr": "Perc.",
+        "top_track_names": [
+            "Piatti (42)",
+            "Triangolo (28)",
+            "Cymbals (16)",
+            "Triangle (14)",
+            "Percussion (12)"
+        ],
+        "example_files": [
+            "classical/arriaga_symphony_1_3_(c)pajares.mid",
+            "classical/arriaga_symphony_1_4_(c)pajares.mid",
+            "classical/bach-karageanes_532_(c)karageanes.mid",
+            "classical/bach-karageanes_532_(c)karageanes.mid",
+            "classical/bach-karageanes_532_(c)karageanes.mid"
+        ]
+    },
+    "PROG_48": {
+        "frequency": 76380,
+        "gm_description": "String Ensemble 1",
+        "target_xml_name": "String Ensemble",
+        "target_xml_abbr": "Str.",
+        "top_track_names": [
+            "Viola (319)",
+            "Violin II (163)",
+            "Violin I (162)",
+            "Cello (154)",
+            "Violine I (102)"
+        ],
+        "example_files": [
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid"
+        ]
+    },
+    "PROG_71": {
+        "frequency": 72267,
+        "gm_description": "Clarinet",
+        "target_xml_name": "Clarinet",
+        "target_xml_abbr": "Cl.",
+        "top_track_names": [
+            "Clarinet (38)",
+            "2 Clarinetti in A (37)",
+            "2 Clarinetti in B (22)",
+            "2 Clarinetti in C (20)",
+            "clarinets (18)"
+        ],
+        "example_files": [
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_2_(c)pajares.mid"
+        ]
+    },
+    "PROG_56": {
+        "frequency": 65086,
+        "gm_description": "Trumpet",
+        "target_xml_name": "Trumpet",
+        "target_xml_abbr": "Tpt.",
+        "top_track_names": [
+            "Trumpet (80)",
+            "2 Trumpets (56)",
+            "2 Trombe in F (30)",
+            "2 Trombe in C (24)",
+            "Trombe in C (15)"
+        ],
+        "example_files": [
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_3_(c)pajares.mid",
+            "classical/arriaga_symphony_1_3_(c)pajares.mid",
+            "classical/arriaga_symphony_1_4_(c)pajares.mid"
+        ]
+    },
+    "PROG_59": {
+        "frequency": 64954,
+        "gm_description": "Muted Trumpet",
+        "target_xml_name": "Trumpet",
+        "target_xml_abbr": "Tpt.",
+        "top_track_names": [
+            "Trombe I - II - III (3)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (3)",
+            "Trumpets in Bb (3)",
+            "Trumpet (2)",
+            "Mute Trumpets (2)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_achtzehn_choraele_bwv-662_(c)mccoy.mid",
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/barber_violin_concerto_1_(c)siu.mid",
+            "classical/barber_violin_concerto_3_(c)siu.mid",
+            "classical/brahms_ouverture_80_(c)lucarelli.mid"
+        ]
+    },
+    "PROG_60": {
+        "frequency": 57965,
+        "gm_description": "French Horn",
+        "target_xml_name": "French Horn",
+        "target_xml_abbr": "Hn.",
+        "top_track_names": [
+            "2 Horns (68)",
+            "Corni in F I II (31)",
+            "Corni in F III IV (30)",
+            "Bass (30)",
+            "Corni (22)"
+        ],
+        "example_files": [
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_2_(c)pajares.mid"
+        ]
+    },
+    "PROG_73": {
+        "frequency": 55038,
+        "gm_description": "Flute",
+        "target_xml_name": "Flute",
+        "target_xml_abbr": "Fl.",
+        "top_track_names": [
+            "Flute (83)",
+            "2 Flauti (81)",
+            "Flauti (60)",
+            "2 Flutes (39)",
+            "Flutes (35)"
+        ],
+        "example_files": [
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_2_(c)pajares.mid"
+        ]
+    },
+    "PROG_57": {
+        "frequency": 54473,
+        "gm_description": "Trombone",
+        "target_xml_name": "Trombone",
+        "target_xml_abbr": "Tbn.",
+        "top_track_names": [
+            "Trombone 3 (46)",
+            "2 Tromboni (41)",
+            "Trombone (30)",
+            "pos (15)",
+            "Trombones (14)"
+        ],
+        "example_files": [
+            "classical/altnikol_befiehl_du_deine_wege_(c)icking-archive.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_10_(c)siu.mid",
+            "classical/bach-js_organ_major_works_bwv-535_(c)fenske.mid",
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/bach-js_organ_major_works_bwv-582_(c)pollen.mid"
+        ]
+    },
+    "PROG_68": {
+        "frequency": 37729,
+        "gm_description": "Oboe",
+        "target_xml_name": "Oboe",
+        "target_xml_abbr": "Ob.",
+        "top_track_names": [
+            "Oboe (124)",
+            "2 Oboi (93)",
+            "2 Oboes (72)",
+            "Oboi (65)",
+            "Oboes (40)"
+        ],
+        "example_files": [
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_2_(c)pajares.mid"
+        ]
+    },
+    "PROG_58": {
+        "frequency": 37060,
+        "gm_description": "Tuba",
+        "target_xml_name": "Tuba",
+        "target_xml_abbr": "Tuba",
+        "top_track_names": [
+            "Tuba (65)",
+            "tuba (25)",
+            "Ophicle\u00efde (6)",
+            "Bass Tuba (5)",
+            "Basson (2)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_achtzehn_choraele_bwv-659_(c)dardel.mid",
+            "classical/bach-js_organ_major_works_bwv-547_(c)mccoy.mid",
+            "classical/bach-js_organ_major_works_bwv-582_(c)pollen.mid",
+            "classical/bach-karageanes_532_(c)karageanes.mid",
+            "classical/bach-karageanes_547_(c)karageanes-.mid"
+        ]
+    },
+    "PROG_70": {
+        "frequency": 36417,
+        "gm_description": "Bassoon",
+        "target_xml_name": "Bassoon",
+        "target_xml_abbr": "Bsn.",
+        "top_track_names": [
+            "2 Fagotti (93)",
+            "Bassoon (88)",
+            "2 Bassoons (74)",
+            "Fagotti (73)",
+            "Bassoons (37)"
+        ],
+        "example_files": [
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_2_(c)pajares.mid"
+        ]
+    },
+    "PROG_40": {
+        "frequency": 28117,
+        "gm_description": "Violin",
+        "target_xml_name": "Violin",
+        "target_xml_abbr": "Vln.",
+        "top_track_names": [
+            "Violin (38)",
+            "Violine 1 (7)",
+            "Violine 2 (7)",
+            "Violin I (3)",
+            "2nd Violin (3)"
+        ],
+        "example_files": [
+            "classical/bach-js_concertos_bwv-1047_1_(c)leslie.mid",
+            "classical/bach-js_concertos_bwv-1047_1_(c)leslie.mid",
+            "classical/bach-js_concertos_bwv-1047_1_(c)leslie.mid",
+            "classical/bach-js_concertos_bwv-1047_3_(c)leslie.mid",
+            "classical/bach-js_concertos_bwv-1047_3_(c)leslie.mid"
+        ]
+    },
+    "PROG_47": {
+        "frequency": 27616,
+        "gm_description": "Timpani",
+        "target_xml_name": "Timpani",
+        "target_xml_abbr": "Timp.",
+        "top_track_names": [
+            "Timpani (291)",
+            "Gran Cassa (22)",
+            "timpani (19)",
+            "Pauken (16)",
+            "pk (11)"
+        ],
+        "example_files": [
+            "classical/arriaga_esclavos_felices_(c)pajares.mid",
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_11_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_13_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_16_(c)siu.mid"
+        ]
+    },
+    "PROG_65": {
+        "frequency": 22857,
+        "gm_description": "Alto Sax",
+        "target_xml_name": "Saxophone",
+        "target_xml_abbr": "Sax.",
+        "top_track_names": [
+            "BWV 548 (2)",
+            "Alto Sax (2)",
+            "Morgenstern\", BuxWV 223 (1)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)",
+            "Handel, Organ Concerto ,Op. 7, No. 2, A Major (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/beethoven_minor_works_hess-239-2_(c)unheard-beethoven.mid",
+            "classical/buxtehude_chorale-preludes_buxwv-223_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid"
+        ]
+    },
+    "PROG_0": {
+        "frequency": 19295,
+        "gm_description": "Acoustic Grand Piano",
+        "target_xml_name": "Piano",
+        "target_xml_abbr": "Pno.",
+        "top_track_names": [
+            "Piano (20)",
+            "Pianoforte (14)",
+            "WinJammer Demo (12)",
+            "Fagotti-L (7)",
+            "Oboi-L (7)"
+        ],
+        "example_files": [
+            "classical/bach_brandeburg_concert_1050_1_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1050_1_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1050_3_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1050_3_(nc)anonym.mid",
+            "classical/barber_violin_concerto_1_(c)siu.mid"
+        ]
+    },
+    "PROG_52": {
+        "frequency": 17989,
+        "gm_description": "Choir Aahs",
+        "target_xml_name": "Choir Aahs",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Tenor (34)",
+            "Bass (32)",
+            "Alto (26)",
+            "Soprano (16)",
+            "Soprano I (9)"
+        ],
+        "example_files": [
+            "classical/bach-js_mass_in_b-minor_bwv-232_11_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_11_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_11_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_11_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_11_(c)siu.mid"
+        ]
+    },
+    "PROG_32": {
+        "frequency": 17257,
+        "gm_description": "Acoustic Bass",
+        "target_xml_name": "Acoustic Bass",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Franck, Fantaisie in C Major, Op. 16 (1)"
+        ],
+        "example_files": [
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "classical/handel_water_music_2_(c)pollen.mid",
+            "classical/handel_water_music_5_(c)pollen.mid",
+            "classical/holst_suite_eb_op_28a_2_(c)pollen.mid",
+            "classical/holst_suite_eb_op_28a_3_(c)pollen.mid"
+        ]
+    },
+    "PROG_43": {
+        "frequency": 16522,
+        "gm_description": "Contrabass",
+        "target_xml_name": "Contrabass",
+        "target_xml_abbr": "Cb.",
+        "top_track_names": [
+            "Basses (15)",
+            "Bassi (9)",
+            "contra basses (9)",
+            "Contrabass (8)",
+            "contrabasses (8)"
+        ],
+        "example_files": [
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_2_(c)pajares.mid",
+            "classical/arriaga_symphony_1_3_(c)pajares.mid",
+            "classical/arriaga_symphony_1_4_(c)pajares.mid",
+            "classical/bach-js_concertos_bwv-1047_1_(c)leslie.mid"
+        ]
+    },
+    "PROG_42": {
+        "frequency": 16197,
+        "gm_description": "Cello",
+        "target_xml_name": "Cello",
+        "target_xml_abbr": "Vc.",
+        "top_track_names": [
+            "Cello (32)",
+            "Basso Continuo (5)",
+            "Bass (4)",
+            "Violoncello (4)",
+            "cello (3)"
+        ],
+        "example_files": [
+            "classical/altnikol_befiehl_du_deine_wege_(c)icking-archive.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_10_(c)siu.mid",
+            "classical/bach_brandeburg_concert_1047_3_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1050_1_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1050_3_(nc)anonym.mid"
+        ]
+    },
+    "PROG_66": {
+        "frequency": 14925,
+        "gm_description": "Tenor Sax",
+        "target_xml_name": "Saxophone",
+        "target_xml_abbr": "Sax.",
+        "top_track_names": [
+            "Manual II (2)",
+            "Tenor Saxophone (2)",
+            "Handel, Organ Concerto ,Op. 7, No. 2, A Major (1)",
+            "Tenor Sax (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_achtzehn_choraele_bwv-659_(c)dardel.mid",
+            "classical/bach-js_organ_achtzehn_choraele_bwv-659_(c)dardel.mid",
+            "classical/barnard_pals_polka_(c)edwards.mid",
+            "classical/handel_concertos_7_2_(c)mccoy.mid",
+            "classical/lemire_alsace_orchestre_(c)lemire.mid"
+        ]
+    },
+    "PROG_72": {
+        "frequency": 14357,
+        "gm_description": "Piccolo",
+        "target_xml_name": "Flute",
+        "target_xml_abbr": "Fl.",
+        "top_track_names": [
+            "Piccolo (58)",
+            "piccolo (7)",
+            "Flautin (6)",
+            "Ottavino (4)",
+            "Piccolo/Flute 3 (2)"
+        ],
+        "example_files": [
+            "classical/bach-karageanes_532_(c)karageanes.mid",
+            "classical/bach-karageanes_547_(c)karageanes-.mid",
+            "classical/bach-karageanes_550_(c)karageanes.mid",
+            "classical/bach-karageanes_564_(c)karageanes.mid",
+            "classical/barber_violin_concerto_3_(c)siu.mid"
+        ]
+    },
+    "PROG_41": {
+        "frequency": 12650,
+        "gm_description": "Viola",
+        "target_xml_name": "Viola",
+        "target_xml_abbr": "Vla.",
+        "top_track_names": [
+            "Viola (42)",
+            "Violins I-1 (20)",
+            "Violins II-1 (20)",
+            "Violas-1 (19)",
+            "Cellos-1 (16)"
+        ],
+        "example_files": [
+            "classical/bach-js_concertos_bwv-1047_1_(c)leslie.mid",
+            "classical/bach-js_concertos_bwv-1047_3_(c)leslie.mid",
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/bach_brandeburg_concert_1047_3_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1047_3_(nc)anonym.mid"
+        ]
+    },
+    "PROG_9": {
+        "frequency": 12037,
+        "gm_description": "Glockenspiel",
+        "target_xml_name": "Mallet Percussion",
+        "target_xml_abbr": "Mallet",
+        "top_track_names": [
+            "Glockenspiel (5)",
+            "glock (5)",
+            "Campanelli (Glockenspiel) (2)",
+            "Campanelli (2)",
+            "Glockenspiel & Violino (1)"
+        ],
+        "example_files": [
+            "classical/bach-karageanes_532_(c)karageanes.mid",
+            "classical/debussy_la_mer_2_(c)galimberti.mid",
+            "classical/debussy_la_mer_3_(c)galimberti.mid",
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "classical/hindemith_mathis_der_maler_1_(c)siu.mid"
+        ]
+    },
+    "PROG_11": {
+        "frequency": 12004,
+        "gm_description": "Vibraphone",
+        "target_xml_name": "Mallet Percussion",
+        "target_xml_abbr": "Mallet",
+        "top_track_names": [
+            "Beethoven - Turkish March from \"The Ruins of Athens\", Op.113-4 (1)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)",
+            "Handel, Organ Concerto ,Op. 7, No. 2, A Major (1)"
+        ],
+        "example_files": [
+            "classical/beethoven_turkish-march_113_4_(c)tadokoro.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "classical/handel_concertos_7_2_(c)mccoy.mid",
+            "contemporary/100078.mid",
+            "contemporary/100110.mid"
+        ]
+    },
+    "PROG_67": {
+        "frequency": 11585,
+        "gm_description": "Baritone Sax",
+        "target_xml_name": "Saxophone",
+        "target_xml_abbr": "Sax.",
+        "top_track_names": [
+            "BWV 548 (1)",
+            "Baritone (1)",
+            "Baritone Sax (1)",
+            "Op. 109, No. 3 (1)",
+            "Baritone Saxophone (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/beethoven_minor_works_hess-239-1_(c)unheard-beethoven.mid",
+            "classical/lemire_alsace_orchestre_(c)lemire.mid",
+            "classical/saint-saens_praeludium_109_3_(c)mccoy.mid",
+            "classical/soutullo-vert_leyenda_del_beso_(c)pajares.mid"
+        ]
+    },
+    "PROG_46": {
+        "frequency": 10233,
+        "gm_description": "Orchestral Harp",
+        "target_xml_name": "Harp",
+        "target_xml_abbr": "Hrp.",
+        "top_track_names": [
+            "Arpa (23)",
+            "harp (20)",
+            "Harp (18)",
+            "Arpa 1 (5)",
+            "Arpa 2 (5)"
+        ],
+        "example_files": [
+            "classical/bach-karageanes_547_(c)karageanes-.mid",
+            "classical/beethoven_minor_works_hess-240_(c)unheard-beethoven.mid",
+            "classical/beethoven_minor_works_hess-302_(c)unheard-beethoven.mid",
+            "classical/beethoven_piano_concerto_61_2-3_(c)lucarelli.mid",
+            "classical/berlioz_symphonie_fantastique_2_(c)galimberti.mid"
+        ]
+    },
+    "PROG_14": {
+        "frequency": 7320,
+        "gm_description": "Tubular Bells",
+        "target_xml_name": "Mallet Percussion",
+        "target_xml_abbr": "Mallet",
+        "top_track_names": [
+            "Bells (4)",
+            "Tubular Bells (3)",
+            "Campane (2)",
+            "Bassoons (1)",
+            "Tuba (1)"
+        ],
+        "example_files": [
+            "classical/berlioz_symphonie_fantastique_5_(c)galimberti.mid",
+            "classical/brahms-karageanes_variations_handel_24_(c)karageanes.mid",
+            "classical/britten_young_person_guide_orchestra_(c)pajares.mid",
+            "classical/britten_young_person_guide_orchestra_(c)pajares.mid",
+            "classical/britten_young_person_guide_orchestra_(c)pajares.mid"
+        ]
+    },
+    "PROG_12": {
+        "frequency": 7074,
+        "gm_description": "Marimba",
+        "target_xml_name": "Mallet Percussion",
+        "target_xml_abbr": "Mallet",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/100078.mid",
+            "contemporary/100110.mid",
+            "contemporary/100457.mid",
+            "contemporary/1015736.mid",
+            "contemporary/1020191.mid"
+        ]
+    },
+    "PROG_13": {
+        "frequency": 5220,
+        "gm_description": "Xylophone",
+        "target_xml_name": "Mallet Percussion",
+        "target_xml_abbr": "Mallet",
+        "top_track_names": [
+            "Xylophone (3)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (2)",
+            "Silofono (2)",
+            "Harp 1 (1)",
+            "Korg Xylophone (1)"
+        ],
+        "example_files": [
+            "classical/britten_young_person_guide_orchestra_(c)pajares.mid",
+            "classical/galynin_piano_concerto_2_1_(c)goldberg.mid",
+            "classical/galynin_piano_concerto_2_2_(c)goldberg.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid"
+        ]
+    },
+    "PROG_69": {
+        "frequency": 4098,
+        "gm_description": "English Horn",
+        "target_xml_name": "English Horn",
+        "target_xml_abbr": "E.Hn.",
+        "top_track_names": [
+            "Corno inglese (11)",
+            "Ehorn (9)",
+            "English Horn (8)",
+            "English horn (8)",
+            "Tenor (6)"
+        ],
+        "example_files": [
+            "classical/altnikol_befiehl_du_deine_wege_(c)icking-archive.mid",
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/bach_cantata_140_bwv-140_1_(c)icking-archive.mid",
+            "classical/bach_cantata_140_bwv-140_7_(c)icking-archive.mid",
+            "classical/bach_cantata_140_bwv-140_7_(c)icking-archive.mid"
+        ]
+    },
+    "PROG_36": {
+        "frequency": 4087,
+        "gm_description": "Slap Bass 1",
+        "target_xml_name": "Slap Bass 1",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "BWV 548 (1)",
+            "Buxtehude, Toccata in F, BuxWV 156 (1)",
+            "\"Alle Menschen m\u00fcssen sterben\" (1)",
+            "Pachelbel, Ciacona (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/pachelbel_chorale_variations_(c)mccoy.mid",
+            "classical/pachelbel_ciacona_(c)mccoy.mid",
+            "contemporary/1099246.mid"
+        ]
+    },
+    "PROG_37": {
+        "frequency": 4069,
+        "gm_description": "Slap Bass 2",
+        "target_xml_name": "Slap Bass 2",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Franck, Fantaisie in C Major, Op. 16 (1)"
+        ],
+        "example_files": [
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "contemporary/1099246.mid",
+            "contemporary/1119166.mid",
+            "contemporary/1160421.mid",
+            "contemporary/1167911.mid"
+        ]
+    },
+    "PROG_33": {
+        "frequency": 3886,
+        "gm_description": "Electric Bass (finger)",
+        "target_xml_name": "Electric Bass (finger)",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "\"Alle Menschen m\u00fcssen sterben\" (1)"
+        ],
+        "example_files": [
+            "classical/pachelbel_chorale_variations_(c)mccoy.mid",
+            "contemporary/100457.mid",
+            "contemporary/1008106.mid",
+            "contemporary/1009501.mid",
+            "contemporary/1013506.mid"
+        ]
+    },
+    "PROG_61": {
+        "frequency": 3058,
+        "gm_description": "Brass Section",
+        "target_xml_name": "Brass Section",
+        "target_xml_abbr": "Brass",
+        "top_track_names": [
+            "2 Tromboni (7)",
+            "Trombone 3 (6)",
+            "2 Trombe in C (4)",
+            "Tuba (4)",
+            "H\u00f6rner in F I II (4)"
+        ],
+        "example_files": [
+            "classical/bach-js_concertos_bwv-1047_1_(c)leslie.mid",
+            "classical/bach-js_concertos_bwv-1047_3_(c)leslie.mid",
+            "classical/beethoven_ouverture_138_(c)lucarelli.mid",
+            "classical/beethoven_ouverture_72a_(c)lucarelli.mid",
+            "classical/beethoven_ouverture_72a_(c)lucarelli.mid"
+        ]
+    },
+    "PROG_28": {
+        "frequency": 2948,
+        "gm_description": "Electric Guitar (muted)",
+        "target_xml_name": "Electric Guitar (muted)",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Buxtehude, Toccata in F, BuxWV 156 (1)"
+        ],
+        "example_files": [
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "contemporary/1001526.mid",
+            "contemporary/1051081.mid",
+            "contemporary/1064961.mid",
+            "contemporary/1139121.mid"
+        ]
+    },
+    "PROG_49": {
+        "frequency": 2787,
+        "gm_description": "String Ensemble 2",
+        "target_xml_name": "String Ensemble",
+        "target_xml_abbr": "Str.",
+        "top_track_names": [
+            "Vc/Basso (13)",
+            "Viola (11)",
+            "Violin II (5)",
+            "Beethoven - Symphony No.7 in A Major Op.92 - 2: Allegretto (5)",
+            "Beethoven - Symphony No.8 in F Major Op.93 - 3: Tempo di Menuetto (5)"
+        ],
+        "example_files": [
+            "classical/arriaga_symphony_1_2_(c)pajares.mid",
+            "classical/bach_brandeburg_concert_1050_1_(nc)anonym.mid",
+            "classical/beethoven-laviano_concerto_0_woo-4_(c)laviano.mid",
+            "classical/beethoven-laviano_concerto_0_woo-4_(c)laviano.mid",
+            "classical/beethoven-laviano_concerto_0_woo-4_(c)laviano.mid"
+        ]
+    },
+    "PROG_26": {
+        "frequency": 2547,
+        "gm_description": "Electric Guitar (jazz)",
+        "target_xml_name": "Electric Guitar (jazz)",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Papageno (7)",
+            "Pamina (5)",
+            "Tamino (3)",
+            "Monostatos (3)",
+            "Tamino1 (2)"
+        ],
+        "example_files": [
+            "classical/buxtehude_chorale-preludes_buxwv-223_(c)mccoy.mid",
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "classical/mozart_die_zauber_floete_620_11_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_12_(c)icking-archive.mid"
+        ]
+    },
+    "PROG_27": {
+        "frequency": 2547,
+        "gm_description": "Electric Guitar (clean)",
+        "target_xml_name": "Electric Guitar (clean)",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (2)"
+        ],
+        "example_files": [
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "contemporary/1013506.mid",
+            "contemporary/1031031.mid",
+            "contemporary/1033671.mid"
+        ]
+    },
+    "PROG_24": {
+        "frequency": 2473,
+        "gm_description": "Acoustic Guitar (nylon)",
+        "target_xml_name": "Acoustic Guitar (nylon)",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Alessandro Poglietti, \"Aria Allemagna\" (1)",
+            "from Three Rhapsodies on Breton Melodies (1)"
+        ],
+        "example_files": [
+            "classical/poglietti_aria_allemagna_(c)mccoy.mid",
+            "classical/saint-saens_rhapsodie_7_2_(c)mccoy.mid",
+            "contemporary/100457.mid",
+            "contemporary/100666.mid",
+            "contemporary/1023161.mid"
+        ]
+    },
+    "PROG_34": {
+        "frequency": 2407,
+        "gm_description": "Electric Bass (pick)",
+        "target_xml_name": "Electric Bass (pick)",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/100457.mid",
+            "contemporary/1020966.mid",
+            "contemporary/1031031.mid",
+            "contemporary/103240.mid",
+            "contemporary/103270.mid"
+        ]
+    },
+    "PROG_64": {
+        "frequency": 2333,
+        "gm_description": "Soprano Sax",
+        "target_xml_name": "Saxophone",
+        "target_xml_abbr": "Sax.",
+        "top_track_names": [
+            "Soprano Sax (2)",
+            "Altsaxofon in Es (2)",
+            "RH cornett (1)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)",
+            "soprano I (1)"
+        ],
+        "example_files": [
+            "classical/beethoven_minor_works_hess-239-1_(c)unheard-beethoven.mid",
+            "classical/bizet_arlesienne_1_minuetto_(c)pajares.mid",
+            "classical/bizet_arlesienne_2_minuetto_(c)pajares.mid",
+            "classical/blow_voluntary_on_the_old_hundredth_(cooke).mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid"
+        ]
+    },
+    "PROG_25": {
+        "frequency": 2080,
+        "gm_description": "Acoustic Guitar (steel)",
+        "target_xml_name": "Acoustic Guitar (steel)",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Franck, Fantaisie in C Major, Op. 16 (2)",
+            "BWV 547, \"Great\", Leipzig (1)",
+            "Voz 2 y Bandurria (1)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)",
+            "Handel, Organ Concerto ,Op. 7, No. 2, A Major (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-547_(c)mccoy.mid",
+            "classical/barbieri_barberillo_de_lavapies_2_(c)pajares.mid",
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid"
+        ]
+    },
+    "PROG_30": {
+        "frequency": 2034,
+        "gm_description": "Distortion Guitar",
+        "target_xml_name": "Distortion Guitar",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Franck, Fantaisie in C Major, Op. 16 (1)"
+        ],
+        "example_files": [
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "contemporary/1052756.mid",
+            "contemporary/1052761.mid",
+            "contemporary/1053246.mid",
+            "contemporary/1064961.mid"
+        ]
+    },
+    "PROG_29": {
+        "frequency": 1991,
+        "gm_description": "Overdriven Guitar",
+        "target_xml_name": "Overdriven Guitar",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1033911.mid",
+            "contemporary/1060051.mid",
+            "contemporary/1060106.mid",
+            "contemporary/1060136.mid",
+            "contemporary/1064961.mid"
+        ]
+    },
+    "PROG_19": {
+        "frequency": 1883,
+        "gm_description": "Church Organ",
+        "target_xml_name": "Organ",
+        "target_xml_abbr": "Org.",
+        "top_track_names": [
+            "Organ (19)",
+            "Church org. 1 (3)",
+            "Organ rh (3)",
+            "Bass Clef (2)",
+            "Flute (2)"
+        ],
+        "example_files": [
+            "classical/bach-js_mass_in_b-minor_bwv-232_11_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_13_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_16_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_23_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_4_(c)siu.mid"
+        ]
+    },
+    "PROG_31": {
+        "frequency": 1461,
+        "gm_description": "Guitar harmonics",
+        "target_xml_name": "Guitar harmonics",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Solo violin (1)",
+            "Harp (1)",
+            "Cello (1)",
+            "from Three Rhapsodies on Breton Melodies (1)",
+            "Harp lh (1)"
+        ],
+        "example_files": [
+            "classical/barber_violin_concerto_3_(c)siu.mid",
+            "classical/debussy_nocturnes_1_(c)siu.mid",
+            "classical/hindemith_metamorphoses_1_(c)siu.mid",
+            "classical/saint-saens_rhapsodie_7_2_(c)mccoy.mid",
+            "classical/webern-bach_ricercata_(siu).mid"
+        ]
+    },
+    "PROG_8": {
+        "frequency": 1379,
+        "gm_description": "Celesta",
+        "target_xml_name": "Celesta",
+        "target_xml_abbr": "Cel.",
+        "top_track_names": [
+            "Celesta (6)",
+            "Tromboni 1 e 2 (1)",
+            "Celesta rh (1)",
+            "Celesta lh (1)",
+            "celesta (1)"
+        ],
+        "example_files": [
+            "classical/mussorgskij_pictures_et_exhibition_1_(c)galimberti.mid",
+            "classical/mussorgskij_pictures_et_exhibition_5_(c)galimberti.mid",
+            "classical/mussorgskij_pictures_et_exhibition_7_(c)galimberti.mid",
+            "classical/mussorgskij_pictures_et_exhibition_9_(c)galimberti.mid",
+            "classical/puccini_tosca_orchestral_selection_(c)pajares.mid"
+        ]
+    },
+    "PROG_50": {
+        "frequency": 1335,
+        "gm_description": "SynthStrings 1",
+        "target_xml_name": "Synth Strings",
+        "target_xml_abbr": "Syn.Str.",
+        "top_track_names": [
+            "Viola (51)",
+            "Violine II (17)",
+            "Violini II (6)",
+            "Viole (5)",
+            "Violino II (5)"
+        ],
+        "example_files": [
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/arriaga_symphony_1_2_(c)pajares.mid",
+            "classical/arriaga_symphony_1_3_(c)pajares.mid",
+            "classical/arriaga_symphony_1_4_(c)pajares.mid",
+            "classical/beethoven_coriolan_(c)lucarelli.mid"
+        ]
+    },
+    "PROG_51": {
+        "frequency": 1303,
+        "gm_description": "SynthStrings 2",
+        "target_xml_name": "Synth Strings",
+        "target_xml_abbr": "Syn.Str.",
+        "top_track_names": [
+            "Franck, Fantaisie in C Major, Op. 16 (3)",
+            "Viola (2)",
+            "Strings (2)",
+            "Strings-2 (1)",
+            "Violin-2 (1)"
+        ],
+        "example_files": [
+            "classical/arriaga_symphony_1_1_(c)pajares.mid",
+            "classical/beethoven_piano_concerto_61a_1_(c)pepperdine.mid",
+            "classical/beethoven_piano_concerto_61a_2-3_(c)pepperdine.mid",
+            "classical/beethoven_piano_concerto_61a_2-3_(c)pepperdine.mid",
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid"
+        ]
+    },
+    "PROG_74": {
+        "frequency": 1248,
+        "gm_description": "Recorder",
+        "target_xml_name": "Recorder",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Treble Clef (1)",
+            "Bass Clef (1)",
+            "BWV 548 (1)",
+            "RH open (1)",
+            "Accompagnement (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_concertos_bwv-1047_1_(c)leslie.mid",
+            "classical/bach-js_concertos_bwv-1047_3_(c)leslie.mid",
+            "classical/bach-js_organ_major_works_bwv-535_(c)fenske.mid",
+            "classical/bach-js_organ_major_works_bwv-535_(c)fenske.mid",
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid"
+        ]
+    },
+    "PROG_6": {
+        "frequency": 998,
+        "gm_description": "Harpsichord",
+        "target_xml_name": "Harpsichord",
+        "target_xml_abbr": "Hpschd.",
+        "top_track_names": [
+            "Harpsichord (30)",
+            "Alessandro Poglietti, \"Aria Allemagna\" (2)",
+            "Clavicembalo R (2)",
+            "Clavicembalo L (2)",
+            "Continuo (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_concertos_bwv-1047_1_(c)leslie.mid",
+            "classical/bach-js_concertos_bwv-1047_3_(c)leslie.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_10_(c)siu.mid",
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/bach_cantata_1_bwv-1_1_(c)icking-archive.mid"
+        ]
+    },
+    "PROG_81": {
+        "frequency": 943,
+        "gm_description": "Lead 2 (sawtooth)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Pachelbel, Ciacona (1)"
+        ],
+        "example_files": [
+            "classical/pachelbel_ciacona_(c)mccoy.mid",
+            "contemporary/103240.mid",
+            "contemporary/1033906.mid",
+            "contemporary/1033911.mid",
+            "contemporary/103925.mid"
+        ]
+    },
+    "PROG_10": {
+        "frequency": 908,
+        "gm_description": "Music Box",
+        "target_xml_name": "Mallet Percussion",
+        "target_xml_abbr": "Mallet",
+        "top_track_names": [
+            "harp (1)",
+            "Pachelbel, Ciacona (1)"
+        ],
+        "example_files": [
+            "classical/mahler_symphony_9_3_(c)boot.mid",
+            "classical/pachelbel_ciacona_(c)mccoy.mid",
+            "contemporary/102913.mid",
+            "contemporary/1044316.mid",
+            "contemporary/1059966.mid"
+        ]
+    },
+    "PROG_80": {
+        "frequency": 888,
+        "gm_description": "Lead 1 (square)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1030476.mid",
+            "contemporary/104976.mid",
+            "contemporary/1051081.mid",
+            "contemporary/1092801.mid",
+            "contemporary/115490.mid"
+        ]
+    },
+    "PROG_1": {
+        "frequency": 876,
+        "gm_description": "Bright Acoustic Piano",
+        "target_xml_name": "Piano",
+        "target_xml_abbr": "Pno.",
+        "top_track_names": [],
+        "example_files": [
+            "classical/saint-saens_organ_symphony_(c)pollen.mid",
+            "classical/saint-saens_organ_symphony_(c)pollen.mid",
+            "contemporary/1023666.mid",
+            "contemporary/1030476.mid",
+            "contemporary/103178.mid"
+        ]
+    },
+    "PROG_4": {
+        "frequency": 863,
+        "gm_description": "Electric Piano 1",
+        "target_xml_name": "Electric Piano",
+        "target_xml_abbr": "E.Pno.",
+        "top_track_names": [
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)"
+        ],
+        "example_files": [
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "contemporary/1026121.mid",
+            "contemporary/104614.mid",
+            "contemporary/1124636.mid",
+            "contemporary/1212076.mid"
+        ]
+    },
+    "PROG_21": {
+        "frequency": 829,
+        "gm_description": "Accordion",
+        "target_xml_name": "Accordion",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "BWV 548 (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "contemporary/1033381.mid",
+            "contemporary/107719.mid",
+            "contemporary/1124636.mid",
+            "contemporary/1132416.mid"
+        ]
+    },
+    "PROG_53": {
+        "frequency": 795,
+        "gm_description": "Voice Oohs",
+        "target_xml_name": "Voice Oohs",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Tenor (3)",
+            "Bass (3)",
+            "Tamino-1 (3)",
+            "2nd Violin (2)",
+            "Sopran (2)"
+        ],
+        "example_files": [
+            "classical/bach_brandeburg_concert_1050_1_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1050_3_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1050_3_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1050_3_(nc)anonym.mid",
+            "classical/bach_cantate_34_bwv-34_1_(c)icking-archive.mid"
+        ]
+    },
+    "PROG_79": {
+        "frequency": 768,
+        "gm_description": "Ocarina",
+        "target_xml_name": "Ocarina",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Organ rh (3)",
+            "Organ lh (3)",
+            "Morgenstern\", BuxWV 223 (2)",
+            "BWV 547, \"Great\", Leipzig (1)",
+            "Organ (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-547_(c)mccoy.mid",
+            "classical/buxtehude_chorale-preludes_buxwv-223_(c)mccoy.mid",
+            "classical/buxtehude_chorale-preludes_buxwv-223_(c)mccoy.mid",
+            "classical/faure_requiem_1_(c)siu.mid",
+            "classical/faure_requiem_1_(c)siu.mid"
+        ]
+    },
+    "PROG_22": {
+        "frequency": 765,
+        "gm_description": "Harmonica",
+        "target_xml_name": "Harmonica",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1167911.mid",
+            "contemporary/1267596.mid",
+            "contemporary/1267596.mid",
+            "contemporary/1329171.mid",
+            "contemporary/1423476.mid"
+        ]
+    },
+    "PROG_62": {
+        "frequency": 717,
+        "gm_description": "SynthBrass 1",
+        "target_xml_name": "Brass Section",
+        "target_xml_abbr": "Brass",
+        "top_track_names": [
+            "soprano (1)",
+            "Buxtehude, Toccata in F, BuxWV 156 (1)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)",
+            "Pachelbel. Aria Sebaldina (1)"
+        ],
+        "example_files": [
+            "classical/brahms_ein_deutsch_requeim_45_1_(c)petri.mid",
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "classical/pachelbel_aria_sebaldina_(c)mccoy.mid",
+            "contemporary/10236.mid"
+        ]
+    },
+    "PROG_63": {
+        "frequency": 673,
+        "gm_description": "SynthBrass 2",
+        "target_xml_name": "Brass Section",
+        "target_xml_abbr": "Brass",
+        "top_track_names": [
+            "Pachelbel, Ciacona (1)"
+        ],
+        "example_files": [
+            "classical/pachelbel_ciacona_(c)mccoy.mid",
+            "contemporary/1149791.mid",
+            "contemporary/1153701.mid",
+            "contemporary/124551.mid",
+            "contemporary/1307061.mid"
+        ]
+    },
+    "PROG_100": {
+        "frequency": 646,
+        "gm_description": "FX 5 (brightness)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Dialogue (2)",
+            "Pachelbel, Ciacona (1)"
+        ],
+        "example_files": [
+            "classical/dandrieu_magnificat_6_6_(c)mccoy.mid",
+            "classical/dandrieu_magnificat_6_6_(c)mccoy.mid",
+            "classical/pachelbel_ciacona_(c)mccoy.mid",
+            "contemporary/1046201.mid",
+            "contemporary/1139201.mid"
+        ]
+    },
+    "PROG_99": {
+        "frequency": 644,
+        "gm_description": "FX 4 (atmosphere)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "from Three Rhapsodies on Breton Melodies (1)"
+        ],
+        "example_files": [
+            "classical/saint-saens_rhapsodie_7_2_(c)mccoy.mid",
+            "contemporary/1046201.mid",
+            "contemporary/1139201.mid",
+            "contemporary/1149791.mid",
+            "contemporary/1151221.mid"
+        ]
+    },
+    "PROG_75": {
+        "frequency": 641,
+        "gm_description": "Pan Flute",
+        "target_xml_name": "Pan Flute",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Sopran (3)",
+            "Papageno (3)",
+            "1. Stimme (1)",
+            "Man. 3 PP 8' (1)",
+            "Man. 3 PP 8' (z50) (1)"
+        ],
+        "example_files": [
+            "classical/altnikol_befiehl_du_deine_wege_(c)icking-archive.mid",
+            "classical/bach_motet_227_bwv-227_1_(c)icking-archive.mid",
+            "classical/conseil_adjuva_me_domine_(c)icking-archive.mid",
+            "classical/gussago_sonata_la_fontana_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_21e_(c)icking-archive.mid"
+        ]
+    },
+    "PROG_39": {
+        "frequency": 600,
+        "gm_description": "Synth Bass 2",
+        "target_xml_name": "Synth Bass 2",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1124636.mid",
+            "contemporary/1174336.mid",
+            "contemporary/1243306.mid",
+            "contemporary/1296441.mid",
+            "contemporary/131150.mid"
+        ]
+    },
+    "PROG_103": {
+        "frequency": 573,
+        "gm_description": "FX 8 (sci-fi)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Morgenstern\", BuxWV 223 (1)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)",
+            "Bassoons (1)"
+        ],
+        "example_files": [
+            "classical/buxtehude_chorale-preludes_buxwv-223_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "classical/schumann_symphony_4_3_(c)cvikl.mid",
+            "contemporary/1046201.mid",
+            "contemporary/1139201.mid"
+        ]
+    },
+    "PROG_102": {
+        "frequency": 573,
+        "gm_description": "FX 7 (echoes)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1046201.mid",
+            "contemporary/1139201.mid",
+            "contemporary/1151221.mid",
+            "contemporary/1163921.mid",
+            "contemporary/1204121.mid"
+        ]
+    },
+    "PROG_98": {
+        "frequency": 566,
+        "gm_description": "FX 3 (crystal)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Dialogue (1)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)",
+            "Pachelbel. Aria Sebaldina (1)",
+            "\"Alle Menschen m\u00fcssen sterben\" (1)",
+            "Pachelbel, Ciacona (1)"
+        ],
+        "example_files": [
+            "classical/dandrieu_magnificat_6_6_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "classical/pachelbel_aria_sebaldina_(c)mccoy.mid",
+            "classical/pachelbel_chorale_variations_(c)mccoy.mid",
+            "classical/pachelbel_ciacona_(c)mccoy.mid"
+        ]
+    },
+    "PROG_101": {
+        "frequency": 556,
+        "gm_description": "FX 6 (goblins)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Dialogue (2)",
+            "Buxtehude, Toccata in F, BuxWV 156 (1)",
+            "Pachelbel. Aria Sebaldina (1)",
+            "Pachelbel, Ciacona (1)",
+            "Op. 109, No. 3 (1)"
+        ],
+        "example_files": [
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/dandrieu_magnificat_6_6_(c)mccoy.mid",
+            "classical/dandrieu_magnificat_6_6_(c)mccoy.mid",
+            "classical/pachelbel_aria_sebaldina_(c)mccoy.mid",
+            "classical/pachelbel_ciacona_(c)mccoy.mid"
+        ]
+    },
+    "PROG_89": {
+        "frequency": 534,
+        "gm_description": "Pad 2 (warm)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Solo Viola (1)"
+        ],
+        "example_files": [
+            "classical/moussorgski_night_on_a_bald_montain_(c)unknown.mid",
+            "contemporary/103178.mid",
+            "contemporary/1061161.mid",
+            "contemporary/1204121.mid",
+            "contemporary/1209901.mid"
+        ]
+    },
+    "PROG_97": {
+        "frequency": 527,
+        "gm_description": "FX 2 (soundtrack)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "BWV 548 (1)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "contemporary/1046201.mid",
+            "contemporary/1139201.mid",
+            "contemporary/1151221.mid"
+        ]
+    },
+    "PROG_91": {
+        "frequency": 524,
+        "gm_description": "Pad 4 (choir)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1015736.mid",
+            "contemporary/103925.mid",
+            "contemporary/1134766.mid",
+            "contemporary/1149791.mid",
+            "contemporary/1265876.mid"
+        ]
+    },
+    "PROG_38": {
+        "frequency": 499,
+        "gm_description": "Synth Bass 1",
+        "target_xml_name": "Synth Bass 1",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Op. 109, No. 3 (2)",
+            "VIOLAS (1)"
+        ],
+        "example_files": [
+            "classical/liszt_grand_galop_chromatique_(c)laviano.mid",
+            "classical/saint-saens_praeludium_109_3_(c)mccoy.mid",
+            "classical/saint-saens_praeludium_109_3_(c)mccoy.mid",
+            "contemporary/10236.mid",
+            "contemporary/115100.mid"
+        ]
+    },
+    "PROG_105": {
+        "frequency": 482,
+        "gm_description": "Banjo",
+        "target_xml_name": "Banjo",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1083856.mid",
+            "contemporary/109833.mid",
+            "contemporary/1259631.mid",
+            "contemporary/126955.mid",
+            "contemporary/1423476.mid"
+        ]
+    },
+    "PROG_78": {
+        "frequency": 472,
+        "gm_description": "Whistle",
+        "target_xml_name": "Whistle",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "\"Alle Menschen m\u00fcssen sterben\" (2)",
+            "BWV 547, \"Great\", Leipzig (1)",
+            "Man3 PP 8' (1)",
+            "Ped PP 16': t12 (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-547_(c)mccoy.mid",
+            "classical/pachelbel_chorale_variations_(c)mccoy.mid",
+            "classical/pachelbel_chorale_variations_(c)mccoy.mid",
+            "classical/reger_145_3_weihnachten_[scpop]_(winitzki-bogdanow).mid",
+            "classical/reger_145_3_weihnachten_[scpop]_(winitzki-bogdanow).mid"
+        ]
+    },
+    "PROG_87": {
+        "frequency": 447,
+        "gm_description": "Lead 8 (bass + lead)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Buxtehude, Toccata in F, BuxWV 156 (1)"
+        ],
+        "example_files": [
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "contemporary/1205416.mid",
+            "contemporary/1512936.mid",
+            "contemporary/1869781.mid",
+            "contemporary/1959756.mid"
+        ]
+    },
+    "PROG_35": {
+        "frequency": 439,
+        "gm_description": "Fretless Bass",
+        "target_xml_name": "Fretless Bass",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Sarastro (3)",
+            "BWV 547, \"Great\", Leipzig (1)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)",
+            "\"Alle Menschen m\u00fcssen sterben\" (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-547_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "classical/mozart_die_zauber_floete_620_10_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_15_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_21g_(c)icking-archive.mid"
+        ]
+    },
+    "PROG_119": {
+        "frequency": 430,
+        "gm_description": "Reverse Cymbal",
+        "target_xml_name": "Reverse Cymbal",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Cymbals (1)"
+        ],
+        "example_files": [
+            "classical/galynin_piano_concerto_2_3_(c)goldberg.mid",
+            "contemporary/1030476.mid",
+            "contemporary/103178.mid",
+            "contemporary/1034906.mid",
+            "contemporary/104846.mid"
+        ]
+    },
+    "PROG_3": {
+        "frequency": 427,
+        "gm_description": "Honky-tonk Piano",
+        "target_xml_name": "Piano",
+        "target_xml_abbr": "Pno.",
+        "top_track_names": [
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)"
+        ],
+        "example_files": [
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "contemporary/1021586.mid",
+            "contemporary/1026641.mid",
+            "contemporary/119609.mid",
+            "contemporary/119609.mid"
+        ]
+    },
+    "PROG_92": {
+        "frequency": 423,
+        "gm_description": "Pad 5 (bowed)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Violin II (1)",
+            "Violin I (1)",
+            "Viola (1)"
+        ],
+        "example_files": [
+            "classical/britten_young_person_guide_orchestra_(c)pajares.mid",
+            "classical/hindemith_metamorphoses_2_(c)siu.mid",
+            "classical/hindemith_metamorphoses_2_(c)siu.mid",
+            "contemporary/101890.mid",
+            "contemporary/1064961.mid"
+        ]
+    },
+    "PROG_20": {
+        "frequency": 410,
+        "gm_description": "Reed Organ",
+        "target_xml_name": "Organ",
+        "target_xml_abbr": "Org.",
+        "top_track_names": [
+            "Organ (4)",
+            "Organ rh (3)",
+            "Organ lh (2)",
+            "BWV 547, \"Great\", Leipzig (1)",
+            "BWV 548 (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_mass_in_b-minor_bwv-232_18_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_19_(c)siu.mid",
+            "classical/bach-js_mass_in_b-minor_bwv-232_20_(c)siu.mid",
+            "classical/bach-js_organ_major_works_bwv-547_(c)mccoy.mid",
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid"
+        ]
+    },
+    "PROG_93": {
+        "frequency": 406,
+        "gm_description": "Pad 6 (metallic)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/102913.mid",
+            "contemporary/1031071.mid",
+            "contemporary/103925.mid",
+            "contemporary/1061161.mid",
+            "contemporary/1064961.mid"
+        ]
+    },
+    "PROG_96": {
+        "frequency": 402,
+        "gm_description": "FX 1 (rain)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Franck, Fantaisie in C Major, Op. 16 (1)"
+        ],
+        "example_files": [
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "contemporary/1139201.mid",
+            "contemporary/1151221.mid",
+            "contemporary/1151221.mid",
+            "contemporary/1163921.mid"
+        ]
+    },
+    "PROG_2": {
+        "frequency": 388,
+        "gm_description": "Electric Grand Piano",
+        "target_xml_name": "Piano",
+        "target_xml_abbr": "Pno.",
+        "top_track_names": [
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)"
+        ],
+        "example_files": [
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "contemporary/105404.mid",
+            "contemporary/1077146.mid",
+            "contemporary/1149791.mid",
+            "contemporary/1164601.mid"
+        ]
+    },
+    "PROG_94": {
+        "frequency": 382,
+        "gm_description": "Pad 7 (halo)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1064961.mid",
+            "contemporary/1163921.mid",
+            "contemporary/1179431.mid",
+            "contemporary/1265876.mid",
+            "contemporary/1282631.mid"
+        ]
+    },
+    "PROG_112": {
+        "frequency": 378,
+        "gm_description": "Tinkle Bell",
+        "target_xml_name": "Tinkle Bell",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "BWV 548 (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "contemporary/1012926.mid",
+            "contemporary/1044316.mid",
+            "contemporary/111532.mid",
+            "contemporary/1132341.mid"
+        ]
+    },
+    "PROG_90": {
+        "frequency": 376,
+        "gm_description": "Pad 3 (polysynth)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/137387.mid",
+            "contemporary/137387.mid",
+            "contemporary/137387.mid",
+            "contemporary/137387.mid",
+            "contemporary/1473976.mid"
+        ]
+    },
+    "PROG_88": {
+        "frequency": 373,
+        "gm_description": "Pad 1 (new age)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "\"Alle Menschen m\u00fcssen sterben\" (1)"
+        ],
+        "example_files": [
+            "classical/pachelbel_chorale_variations_(c)mccoy.mid",
+            "contemporary/1061161.mid",
+            "contemporary/115100.mid",
+            "contemporary/1204121.mid",
+            "contemporary/131150.mid"
+        ]
+    },
+    "PROG_95": {
+        "frequency": 359,
+        "gm_description": "Pad 8 (sweep)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1163921.mid",
+            "contemporary/1307061.mid",
+            "contemporary/1420106.mid",
+            "contemporary/1473976.mid",
+            "contemporary/1508556.mid"
+        ]
+    },
+    "PROG_16": {
+        "frequency": 336,
+        "gm_description": "Drawbar Organ",
+        "target_xml_name": "Organ",
+        "target_xml_abbr": "Org.",
+        "top_track_names": [
+            "Cembalo LH (2)",
+            "Basson (2)",
+            "Cembalo RH (1)",
+            "Organ 1 (1)",
+            "\"Alle Menschen m\u00fcssen sterben\" (1)"
+        ],
+        "example_files": [
+            "classical/bach_brandeburg_concert_1050_1_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1050_1_(nc)anonym.mid",
+            "classical/bach_brandeburg_concert_1050_3_(nc)anonym.mid",
+            "classical/beethoven_minor_works_hess-233c_(c)unheard-beethoven.mid",
+            "classical/beethoven_minor_works_hess-233_(c)unheard-beethoven.mid"
+        ]
+    },
+    "PROG_18": {
+        "frequency": 324,
+        "gm_description": "Rock Organ",
+        "target_xml_name": "Organ",
+        "target_xml_abbr": "Org.",
+        "top_track_names": [
+            "Organ 3 (3)",
+            "Cembalo LH (1)",
+            "Franck, Fantaisie in C Major, Op. 16 (1)",
+            "Pachelbel. Aria Sebaldina (1)",
+            "from Three Rhapsodies on Breton Melodies (1)"
+        ],
+        "example_files": [
+            "classical/bach_brandeburg_concert_1050_1_(nc)anonym.mid",
+            "classical/beethoven_minor_works_hess-234_(c)unheard-beethoven.mid",
+            "classical/beethoven_minor_works_hess-235c_(c)unheard-beethoven.mid",
+            "classical/beethoven_minor_works_hess-235_(c)unheard-beethoven.mid",
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid"
+        ]
+    },
+    "PROG_116": {
+        "frequency": 311,
+        "gm_description": "Taiko Drum",
+        "target_xml_name": "Taiko Drum",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (2)",
+            "BWV 547, \"Great\", Leipzig (1)",
+            "BWV 548 (1)",
+            "Beethoven - Turkish March from \"The Ruins of Athens\", Op.113-4 (1)",
+            "Buxtehude, Toccata in F, BuxWV 156 (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-547_(c)mccoy.mid",
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/beethoven_turkish-march_113_4_(c)tadokoro.mid",
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid"
+        ]
+    },
+    "PROG_17": {
+        "frequency": 308,
+        "gm_description": "Percussive Organ",
+        "target_xml_name": "Organ",
+        "target_xml_abbr": "Org.",
+        "top_track_names": [
+            "Flute (2)",
+            "Oboe (2)",
+            "Clarinet (2)",
+            "Basson (2)",
+            "Percuss. Organ (1)"
+        ],
+        "example_files": [
+            "classical/beethoven_minor_works_hess-233c_(c)unheard-beethoven.mid",
+            "classical/beethoven_minor_works_hess-233c_(c)unheard-beethoven.mid",
+            "classical/beethoven_minor_works_hess-233c_(c)unheard-beethoven.mid",
+            "classical/beethoven_minor_works_hess-233c_(c)unheard-beethoven.mid",
+            "classical/beethoven_minor_works_hess-233_(c)unheard-beethoven.mid"
+        ]
+    },
+    "PROG_15": {
+        "frequency": 295,
+        "gm_description": "Dulcimer",
+        "target_xml_name": "Mallet Percussion",
+        "target_xml_abbr": "Mallet",
+        "top_track_names": [
+            "from Three Rhapsodies on Breton Melodies (2)",
+            "Franck, Fantaisie in C Major, Op. 16 (1)",
+            "Mozart - The Sleigh Ride - Three German dances K605 No. 3 (1)",
+            "Pachelbel. Aria Sebaldina (1)"
+        ],
+        "example_files": [
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "classical/mozart_sleigh-ride_605_3_(c)tadokoro.mid",
+            "classical/pachelbel_aria_sebaldina_(c)mccoy.mid",
+            "classical/saint-saens_rhapsodie_7_2_(c)mccoy.mid",
+            "classical/saint-saens_rhapsodie_7_2_(c)mccoy.mid"
+        ]
+    },
+    "PROG_117": {
+        "frequency": 294,
+        "gm_description": "Melodic Tom",
+        "target_xml_name": "Melodic Tom",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Buxtehude, Toccata in F, BuxWV 156 (1)",
+            "gpollen@polleng.freeserve.co.uk (1)",
+            "\"Alle Menschen m\u00fcssen sterben\" (1)"
+        ],
+        "example_files": [
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/khachaturian_gayaneh_ayesha-s_ance_(c)pollen.mid",
+            "classical/khachaturian_gayaneh_lezghinka_(c)pollen.mid",
+            "classical/pachelbel_chorale_variations_(c)mccoy.mid",
+            "contemporary/103925.mid"
+        ]
+    },
+    "PROG_114": {
+        "frequency": 276,
+        "gm_description": "Steel Drums",
+        "target_xml_name": "Steel Drums",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1087096.mid",
+            "contemporary/1129351.mid",
+            "contemporary/1129351.mid",
+            "contemporary/1163921.mid",
+            "contemporary/1164216.mid"
+        ]
+    },
+    "PROG_85": {
+        "frequency": 265,
+        "gm_description": "Lead 6 (voice)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Pamina1 (4)",
+            "Papageno1 (2)",
+            "Sarastro1 (1)",
+            "Sarastro-1 (1)",
+            "Henchmen-1 (1)"
+        ],
+        "example_files": [
+            "classical/mozart_die_zauber_floete_620_10_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_12_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_12_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_14_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_15_(c)icking-archive.mid"
+        ]
+    },
+    "PROG_55": {
+        "frequency": 260,
+        "gm_description": "Orchestra Hit",
+        "target_xml_name": "Synth Strings",
+        "target_xml_abbr": "Syn.Str.",
+        "top_track_names": [
+            "cello (1)",
+            "Buxtehude, Toccata in F, BuxWV 156 (1)",
+            "\"Alle Menschen m\u00fcssen sterben\" (1)"
+        ],
+        "example_files": [
+            "classical/bach_brandeburg_concert_1050_3_(nc)anonym.mid",
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/grieg_piano_concerto_54_(c)unknown.mid",
+            "classical/pachelbel_chorale_variations_(c)mccoy.mid",
+            "contemporary/1032586.mid"
+        ]
+    },
+    "PROG_5": {
+        "frequency": 259,
+        "gm_description": "Electric Piano 2",
+        "target_xml_name": "Electric Piano",
+        "target_xml_abbr": "E.Pno.",
+        "top_track_names": [
+            "Franck, Fantaisie in C Major, Op. 16 (2)",
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)",
+            "Pachelbel, Ciacona (1)",
+            "from Three Rhapsodies on Breton Melodies (1)"
+        ],
+        "example_files": [
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "classical/pachelbel_ciacona_(c)mccoy.mid",
+            "classical/saint-saens_rhapsodie_7_2_(c)mccoy.mid"
+        ]
+    },
+    "PROG_54": {
+        "frequency": 254,
+        "gm_description": "Synth Voice",
+        "target_xml_name": "Synth Voice",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Papageno-1 (2)",
+            "Cello (1)",
+            "Franck, Fantaisie in C Major, Op. 16 (1)",
+            "Papagena-1 (1)",
+            "\"Alle Menschen m\u00fcssen sterben\" (1)"
+        ],
+        "example_files": [
+            "classical/bach_brandeburg_concert_1050_1_(nc)anonym.mid",
+            "classical/franck_fantaisie_op_16_(c)mccoy.mid",
+            "classical/mahler_symphony_4_4_(c)unknown.mid",
+            "classical/mozart_die_zauber_floete_620_21e_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_21f_(c)icking-archive.mid"
+        ]
+    },
+    "PROG_109": {
+        "frequency": 231,
+        "gm_description": "Bag pipe",
+        "target_xml_name": "Bag pipe",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Alessandro Poglietti, \"Aria Allemagna\" (1)"
+        ],
+        "example_files": [
+            "classical/poglietti_aria_allemagna_(c)mccoy.mid",
+            "contemporary/1056746.mid",
+            "contemporary/107420.mid",
+            "contemporary/1112091.mid",
+            "contemporary/126535.mid"
+        ]
+    },
+    "PROG_107": {
+        "frequency": 225,
+        "gm_description": "Koto",
+        "target_xml_name": "Koto",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Dialogue (1)",
+            "Handel, Organ Concerto ,Op. 7, No. 2, A Major (1)"
+        ],
+        "example_files": [
+            "classical/dandrieu_magnificat_6_6_(c)mccoy.mid",
+            "classical/handel_concertos_7_2_(c)mccoy.mid",
+            "contemporary/114391.mid",
+            "contemporary/1307861.mid",
+            "contemporary/1307861.mid"
+        ]
+    },
+    "PROG_110": {
+        "frequency": 223,
+        "gm_description": "Fiddle",
+        "target_xml_name": "Fiddle",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Tenor Viol (1)",
+            "from Three Rhapsodies on Breton Melodies (1)",
+            "Violoncello (1)"
+        ],
+        "example_files": [
+            "classical/mahler_symphony_4_2_(c)unknown.mid",
+            "classical/mahler_symphony_4_2_(c)unknown.mid",
+            "classical/mahler_symphony_4_2_(c)unknown.mid",
+            "classical/mahler_symphony_4_2_(c)unknown.mid",
+            "classical/mahler_symphony_4_2_(c)unknown.mid"
+        ]
+    },
+    "PROG_82": {
+        "frequency": 220,
+        "gm_description": "Lead 3 (calliope)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "\"Alle Menschen m\u00fcssen sterben\" (1)"
+        ],
+        "example_files": [
+            "classical/pachelbel_chorale_variations_(c)mccoy.mid",
+            "contemporary/1252316.mid",
+            "contemporary/1450231.mid",
+            "contemporary/1450231.mid",
+            "contemporary/1600961.mid"
+        ]
+    },
+    "PROG_7": {
+        "frequency": 197,
+        "gm_description": "Clavinet",
+        "target_xml_name": "Clavinet",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Handel, Organ Concerto Op. 7, No. 1, B-flat Major (1)",
+            "continuo low (1)"
+        ],
+        "example_files": [
+            "classical/handel_concertos_7_1_(c)mccoy.mid",
+            "classical/magnificat_(c)alvarez.mid",
+            "contemporary/1021586.mid",
+            "contemporary/1092671.mid",
+            "contemporary/11181.mid"
+        ]
+    },
+    "PROG_76": {
+        "frequency": 195,
+        "gm_description": "Blown Bottle",
+        "target_xml_name": "Blown Bottle",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Treble Clef (1)",
+            "Bass Clef (1)",
+            "Buxtehude, Toccata in F, BuxWV 156 (1)",
+            "Violins (1)",
+            "Pachelbel, Ciacona (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-535_(c)fenske.mid",
+            "classical/bach-js_organ_major_works_bwv-535_(c)fenske.mid",
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/debussy_nocturnes_1_(c)siu.mid",
+            "classical/pachelbel_ciacona_(c)mccoy.mid"
+        ]
+    },
+    "PROG_104": {
+        "frequency": 179,
+        "gm_description": "Sitar",
+        "target_xml_name": "Sitar",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Pachelbel. Aria Sebaldina (1)"
+        ],
+        "example_files": [
+            "classical/pachelbel_aria_sebaldina_(c)mccoy.mid",
+            "contemporary/103442.mid",
+            "contemporary/111549.mid",
+            "contemporary/131321.mid",
+            "contemporary/1326536.mid"
+        ]
+    },
+    "PROG_23": {
+        "frequency": 152,
+        "gm_description": "Tango Accordion",
+        "target_xml_name": "Tango Accordion",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1267596.mid",
+            "contemporary/1352296.mid",
+            "contemporary/1356406.mid",
+            "contemporary/146907.mid",
+            "contemporary/147774.mid"
+        ]
+    },
+    "PROG_108": {
+        "frequency": 137,
+        "gm_description": "Kalimba",
+        "target_xml_name": "Kalimba",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1112091.mid",
+            "contemporary/1132341.mid",
+            "contemporary/1132341.mid",
+            "contemporary/1132341.mid",
+            "contemporary/1304141.mid"
+        ]
+    },
+    "PROG_83": {
+        "frequency": 134,
+        "gm_description": "Lead 4 (chiff)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Pachelbel, Ciacona (1)"
+        ],
+        "example_files": [
+            "classical/pachelbel_ciacona_(c)mccoy.mid",
+            "contemporary/179206.mid",
+            "contemporary/188126.mid",
+            "contemporary/2517296.mid",
+            "contemporary/2556551.mid"
+        ]
+    },
+    "PROG_77": {
+        "frequency": 118,
+        "gm_description": "Shakuhachi",
+        "target_xml_name": "Shakuhachi",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "BWV 662 (1)",
+            "Treble Clef (1)",
+            "Bass Clef (1)",
+            "Buxtehude, Toccata in F, BuxWV 156 (1)",
+            "Pachelbel, Ciacona (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_achtzehn_choraele_bwv-662_(c)mccoy.mid",
+            "classical/bach-js_organ_major_works_bwv-535_(c)fenske.mid",
+            "classical/bach-js_organ_major_works_bwv-535_(c)fenske.mid",
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/pachelbel_ciacona_(c)mccoy.mid"
+        ]
+    },
+    "PROG_122": {
+        "frequency": 109,
+        "gm_description": "Seashore",
+        "target_xml_name": "Seashore",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/105811.mid",
+            "contemporary/1124636.mid",
+            "contemporary/1128286.mid",
+            "contemporary/1146821.mid",
+            "contemporary/1155201.mid"
+        ]
+    },
+    "PROG_127": {
+        "frequency": 95,
+        "gm_description": "Gunshot",
+        "target_xml_name": "Gunshot",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Trombone Basso (1)"
+        ],
+        "example_files": [
+            "classical/puccini_tosca_orchestral_selection_(c)pajares.mid",
+            "contemporary/105811.mid",
+            "contemporary/109747.mid",
+            "contemporary/1174671.mid",
+            "contemporary/1352336.mid"
+        ]
+    },
+    "PROG_106": {
+        "frequency": 89,
+        "gm_description": "Shamisen",
+        "target_xml_name": "Shamisen",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "violines (1)",
+            "Violas (1)",
+            "Cellos (1)",
+            "cottabajos (1)",
+            "B14-Cello sect. (1)"
+        ],
+        "example_files": [
+            "classical/liszt_totentanz_216_(c)laviano.mid",
+            "classical/liszt_totentanz_216_(c)laviano.mid",
+            "classical/liszt_totentanz_216_(c)laviano.mid",
+            "classical/liszt_totentanz_216_(c)laviano.mid",
+            "classical/stravinsky_firebird_suite_(c)nakajima.mid"
+        ]
+    },
+    "PROG_115": {
+        "frequency": 71,
+        "gm_description": "Woodblock",
+        "target_xml_name": "Woodblock",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "BWV 548 (1)",
+            "Harp 2 (1)",
+            "Tambourine (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-548_(c)mccoy.mid",
+            "classical/britten_young_person_guide_orchestra_(c)pajares.mid",
+            "classical/galynin_piano_concerto_2_3_(c)goldberg.mid",
+            "contemporary/123006.mid",
+            "contemporary/1348201.mid"
+        ]
+    },
+    "PROG_84": {
+        "frequency": 52,
+        "gm_description": "Lead 5 (charang)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Monostatos1 (2)",
+            "Monostatos-1 (1)",
+            "Pachelbel, Ciacona (1)"
+        ],
+        "example_files": [
+            "classical/mozart_die_zauber_floete_620_21g_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_6_(c)icking-archive.mid",
+            "classical/mozart_die_zauber_floete_620_8d_(c)icking-archive.mid",
+            "classical/pachelbel_ciacona_(c)mccoy.mid",
+            "contemporary/1282631.mid"
+        ]
+    },
+    "PROG_111": {
+        "frequency": 51,
+        "gm_description": "Shanai",
+        "target_xml_name": "Shanai",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Pachelbel, Ciacona (1)",
+            "from Three Rhapsodies on Breton Melodies (1)"
+        ],
+        "example_files": [
+            "classical/pachelbel_ciacona_(c)mccoy.mid",
+            "classical/saint-saens_rhapsodie_7_2_(c)mccoy.mid",
+            "contemporary/153375.mid",
+            "contemporary/1933566.mid",
+            "contemporary/2824636.mid"
+        ]
+    },
+    "PROG_121": {
+        "frequency": 47,
+        "gm_description": "Breath Noise",
+        "target_xml_name": "Breath Noise",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Op. 109, No. 3 (1)"
+        ],
+        "example_files": [
+            "classical/saint-saens_praeludium_109_3_(c)mccoy.mid",
+            "contemporary/1034906.mid",
+            "contemporary/1128286.mid",
+            "contemporary/1535136.mid",
+            "contemporary/1631211.mid"
+        ]
+    },
+    "PROG_118": {
+        "frequency": 38,
+        "gm_description": "Synth Drum",
+        "target_xml_name": "Synth Drum",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "BWV 547, \"Great\", Leipzig (1)",
+            "Morgenstern\", BuxWV 223 (1)",
+            "Buxtehude, Toccata in F, BuxWV 156 (1)",
+            "Snare Drum (1)",
+            "Bass Drum (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_major_works_bwv-547_(c)mccoy.mid",
+            "classical/buxtehude_chorale-preludes_buxwv-223_(c)mccoy.mid",
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/galynin_piano_concerto_2_3_(c)goldberg.mid",
+            "classical/galynin_piano_concerto_2_3_(c)goldberg.mid"
+        ]
+    },
+    "PROG_126": {
+        "frequency": 33,
+        "gm_description": "Applause",
+        "target_xml_name": "Applause",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Buxtehude, Toccata in F, BuxWV 156 (1)"
+        ],
+        "example_files": [
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "contemporary/1064961.mid",
+            "contemporary/1595116.mid",
+            "contemporary/2156441.mid",
+            "contemporary/2339381.mid"
+        ]
+    },
+    "PROG_125": {
+        "frequency": 32,
+        "gm_description": "Helicopter",
+        "target_xml_name": "Helicopter",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/2236591.mid",
+            "contemporary/2295516.mid",
+            "contemporary/2391736.mid",
+            "contemporary/2814201.mid",
+            "contemporary/4300561.mid"
+        ]
+    },
+    "PROG_86": {
+        "frequency": 31,
+        "gm_description": "Lead 7 (fifths)",
+        "target_xml_name": "Synthesizer",
+        "target_xml_abbr": "Synth.",
+        "top_track_names": [
+            "Buxtehude, Toccata in F, BuxWV 156 (1)"
+        ],
+        "example_files": [
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "contemporary/171331.mid",
+            "contemporary/2514101.mid",
+            "contemporary/2535516.mid",
+            "contemporary/3350066.mid"
+        ]
+    },
+    "PROG_124": {
+        "frequency": 31,
+        "gm_description": "Telephone Ring",
+        "target_xml_name": "Telephone Ring",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [],
+        "example_files": [
+            "contemporary/1455596.mid",
+            "contemporary/1595116.mid",
+            "contemporary/224521.mid",
+            "contemporary/2423901.mid",
+            "contemporary/2732996.mid"
+        ]
+    },
+    "PROG_123": {
+        "frequency": 27,
+        "gm_description": "Bird Tweet",
+        "target_xml_name": "Bird Tweet",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Papagena-1 (1)",
+            "Percussion (1)"
+        ],
+        "example_files": [
+            "classical/mozart_die_zauber_floete_620_21f_(c)icking-archive.mid",
+            "classical/respighi_rossiniana_4_(c)edwards.mid",
+            "contemporary/131321.mid",
+            "contemporary/1867676.mid",
+            "contemporary/4829136.mid"
+        ]
+    },
+    "PROG_113": {
+        "frequency": 17,
+        "gm_description": "Agogo",
+        "target_xml_name": "Agogo",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "BWV 662 (1)",
+            "Pachelbel. Aria Sebaldina (1)"
+        ],
+        "example_files": [
+            "classical/bach-js_organ_achtzehn_choraele_bwv-662_(c)mccoy.mid",
+            "classical/pachelbel_aria_sebaldina_(c)mccoy.mid",
+            "contemporary/158187.mid",
+            "contemporary/1622051.mid",
+            "contemporary/179625.mid"
+        ]
+    },
+    "PROG_120": {
+        "frequency": 17,
+        "gm_description": "Guitar Fret Noise",
+        "target_xml_name": "Guitar Fret Noise",
+        "target_xml_abbr": "Inst.",
+        "top_track_names": [
+            "Violini I (1)",
+            "Violini II (1)",
+            "Viole (1)",
+            "Buxtehude, Toccata in F, BuxWV 156 (1)",
+            "Op. 109, No. 3 (1)"
+        ],
+        "example_files": [
+            "classical/berlioz_symphonie_fantastique_5_(c)galimberti.mid",
+            "classical/berlioz_symphonie_fantastique_5_(c)galimberti.mid",
+            "classical/berlioz_symphonie_fantastique_5_(c)galimberti.mid",
+            "classical/buxtehude_major_organ_works_buxwv-156_(c)mccoy.mid",
+            "classical/saint-saens_praeludium_109_3_(c)mccoy.mid"
+        ]
+    }
+}
