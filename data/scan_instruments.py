@@ -7,7 +7,7 @@ from collections import Counter, defaultdict
 from concurrent.futures import ProcessPoolExecutor
 
 # ==========================================
-# 1. GM 标准乐器表
+# 1. GM 标准乐器表 (Reference)
 # ==========================================
 GM_INSTRUMENTS = {
     0: "Acoustic Grand Piano", 1: "Bright Acoustic Piano", 2: "Electric Grand Piano", 3: "Honky-tonk Piano",
@@ -51,70 +51,121 @@ def get_gm_name(prog_id):
 
 
 # ==========================================
-# 2. 智能归类逻辑 (决定 Base Name)
+# 2. 科学分类映射表 (Scientific Taxonomy)
 # ==========================================
+# 依据：发声物理机制、频响范围、关键演奏技法
+SCIENTIFIC_MAPPING = {
+    # --- Keyboards (Excitation: Struck/Plucked/Wind) ---
+    0: ("Piano", "Pno."), 1: ("Piano", "Pno."), 2: ("Piano", "Pno."), 3: ("Piano", "Pno."),
+    4: ("Electric Piano", "E.Pno."), 5: ("Electric Piano", "E.Pno."),
+    6: ("Harpsichord", "Hpschd."), 7: ("Harpsichord", "Hpschd."),
+    16: ("Organ", "Org."), 17: ("Organ", "Org."), 18: ("Organ", "Org."), 19: ("Organ", "Org."), 20: ("Organ", "Org."),
+    21: ("Accordion", "Acc."), 22: ("Harmonica", "Harm."), 23: ("Accordion", "Acc."),
+
+    # --- Plucked Strings (Excitation: Plucked, Transient) ---
+    24: ("Nylon Guitar", "N.Gtr."),
+    25: ("Steel Guitar", "S.Gtr."),
+    26: ("Clean Elec Guitar", "E.Gtr."), 27: ("Clean Elec Guitar", "E.Gtr."), 28: ("Clean Elec Guitar", "E.Gtr."),
+    29: ("Distorted Guitar", "Dist.Gtr."), 30: ("Distorted Guitar", "Dist.Gtr."),
+    31: ("Clean Elec Guitar", "Harm.Gtr."),  # Guitar harmonics usually mapped to Clean
+    46: ("Harp", "Hrp."),
+
+    # --- Bass (Function: Low Frequency Foundation) ---
+    32: ("Acoustic Bass", "Ac.Bass"),
+    33: ("Electric Bass", "E.Bass"), 34: ("Electric Bass", "E.Bass"),
+    35: ("Electric Bass", "Fretless"),  # Fretless is technically Electric
+    36: ("Electric Bass", "Slap.Bass"), 37: ("Electric Bass", "Slap.Bass"),
+    38: ("Synth Bass", "Syn.Bass"), 39: ("Synth Bass", "Syn.Bass"),
+
+    # --- Bowed Strings (Excitation: Bowed, Sustained) ---
+    # 严格区分四重奏乐器
+    40: ("Violin", "Vln."),
+    41: ("Viola", "Vla."),
+    42: ("Violoncello", "Vc."),
+    43: ("Contrabass", "Cb."),
+    # 特殊技法独立
+    44: ("Tremolo Strings", "Trem."),
+    45: ("Pizzicato Strings", "Pizz."),
+    # 合奏
+    48: ("String Ensemble", "Str."), 49: ("String Ensemble", "Str."),
+    50: ("String Ensemble", "Syn.Str."), 51: ("String Ensemble", "Syn.Str."),
+    # Synth Strings mapped to Ensemble context
+    55: ("String Ensemble", "Hit"),  # Orchestra Hit often used as staccato strings
+
+    # --- Brass (Excitation: Lip Reed) ---
+    56: ("Trumpet", "Tpt."),
+    57: ("Trombone", "Tbn."),
+    58: ("Tuba", "Tuba"),
+    59: ("Muted Trumpet", "Mut.Tpt."),  # 独立分类，共振峰不同
+    60: ("French Horn", "Hn."),
+    61: ("Brass Section", "Brass"), 62: ("Brass Section", "Syn.Brass"), 63: ("Brass Section", "Syn.Brass"),
+
+    # --- Woodwinds (Excitation: Air Reed/Cane Reed) ---
+    64: ("Saxophone", "Sax."), 65: ("Saxophone", "Sax."), 66: ("Saxophone", "Sax."), 67: ("Saxophone", "Sax."),
+    68: ("Oboe", "Ob."),
+    69: ("English Horn", "E.Hn."),
+    70: ("Bassoon", "Bsn."),
+    71: ("Clarinet", "Cl."),
+    72: ("Piccolo", "Picc."),  # 独立分类，音域极高
+    73: ("Flute", "Fl."),
+    74: ("Flute", "Rec."),  # Recorder mapped to Flute family
+    75: ("Flute", "Pan.Fl."), 76: ("Flute", "Bottle"), 77: ("Flute", "Shaku."), 78: ("Flute", "Whistle"),
+    79: ("Flute", "Ocarina"),
+
+    # --- Percussion & Chromatic (Function: Rhythm & Color) ---
+    47: ("Timpani", "Timp."),
+    8: ("Celesta", "Cel."),
+    9: ("Glockenspiel", "Glk."),
+    10: ("Music Box", "M.Box"),
+    11: ("Vibraphone", "Vib."),
+    12: ("Marimba", "Mar."),
+    13: ("Xylophone", "Xyl."),
+    14: ("Tubular Bells", "T.Bells"),
+    15: ("Dulcimer", "Dulc."),
+    112: ("Mallet Percussion", "Tink.Bell"), 113: ("Mallet Percussion", "Agogo"),
+    114: ("Mallet Percussion", "Steel.Dr"), 115: ("Mallet Percussion", "Woodblk"),
+
+    # --- Synthesizer (Function: Electronic Texture) ---
+    # Lead (Melody)
+    80: ("Synth Lead", "Lead"), 81: ("Synth Lead", "Lead"), 82: ("Synth Lead", "Lead"), 83: ("Synth Lead", "Lead"),
+    84: ("Synth Lead", "Lead"), 85: ("Synth Lead", "Lead"), 86: ("Synth Lead", "Lead"), 87: ("Synth Lead", "Lead"),
+    # Pad (Atmosphere)
+    88: ("Synth Pad", "Pad"), 89: ("Synth Pad", "Pad"), 90: ("Synth Pad", "Pad"), 91: ("Synth Pad", "Pad"),
+    92: ("Synth Pad", "Pad"), 93: ("Synth Pad", "Pad"), 94: ("Synth Pad", "Pad"), 95: ("Synth Pad", "Pad"),
+    # FX (Effects)
+    96: ("Synth Pad", "FX"), 97: ("Synth Pad", "FX"), 98: ("Synth Pad", "FX"), 99: ("Synth Pad", "FX"),
+    100: ("Synth Pad", "FX"), 101: ("Synth Pad", "FX"), 102: ("Synth Pad", "FX"), 103: ("Synth Pad", "FX"),
+
+    # --- Ethnic / SFX ---
+    104: ("Ethnic", "Eth."), 105: ("Ethnic", "Banjo"), 106: ("Ethnic", "Eth."), 107: ("Ethnic", "Koto"),
+    108: ("Ethnic", "Kalimba"), 109: ("Ethnic", "Bagpipe"), 110: ("Violin", "Fiddle"), 111: ("Ethnic", "Shanai"),
+
+    # Percussion placeholders (non-chromatic usually handled by Channel 10)
+    116: ("Percussion", "Taiko"), 117: ("Percussion", "Tom"), 118: ("Percussion", "Syn.Drum"),
+    119: ("Percussion", "Rev.Cym"),
+
+    # SFX
+    120: ("Clean Elec Guitar", "Gtr.Fret"),  # Noise
+    121: ("Ethnic", "Breath"), 122: ("Ethnic", "Seashore"), 123: ("Ethnic", "Bird"), 124: ("Ethnic", "Tel."),
+    125: ("Ethnic", "Heli."), 126: ("Ethnic", "Applause"), 127: ("Ethnic", "Gunshot")
+}
+
+
 def get_smart_category(prog_id):
     """
-    输入: MIDI Program ID
-    输出: (Base Name, Abbreviation)
-    用于确定清洗后的'基础'乐器名，比如把所有 Guitar 归为 'Nylon Guitar'
+    根据 MIDI Program ID 返回科学分类后的 (XML Name, XML Abbreviation)
     """
-    # Keyboards
-    if prog_id in [0, 1, 2, 3]:       return "Piano", "Pno."
-    if prog_id == 6:                  return "Harpsichord", "Hpschd."
-    if prog_id in [4, 5]:             return "Electric Piano", "E.Pno."
-    if 16 <= prog_id <= 20:           return "Organ", "Org."
-    if prog_id == 8:                  return "Celesta", "Cel."
+    if prog_id in SCIENTIFIC_MAPPING:
+        return SCIENTIFIC_MAPPING[prog_id]
 
-    # Strings (Solo)
-    if prog_id == 40:                 return "Violin", "Vln."
-    if prog_id == 41:                 return "Viola", "Vla."
-    if prog_id == 42:                 return "Cello", "Vc."
-    if prog_id == 43:                 return "Contrabass", "Cb."
-    if prog_id == 46:                 return "Harp", "Hrp."
-
-    # Strings (Ensemble/Tech)
-    if prog_id == 45:                 return "Pizzicato Strings", "Pizz."
-    if prog_id == 44:                 return "Tremolo Strings", "Trem."
-    if prog_id in [48, 49]:           return "String Ensemble", "Str."
-
-    # Brass
-    if prog_id in [56, 59]:           return "Trumpet", "Tpt."
-    if prog_id == 57:                 return "Trombone", "Tbn."
-    if prog_id == 58:                 return "Tuba", "Tuba"
-    if prog_id == 60:                 return "French Horn", "Hn."
-    if 61 <= prog_id <= 63:           return "Brass Section", "Brass"
-
-    # Woodwinds
-    if prog_id in [73, 72]:           return "Flute", "Fl."
-    if prog_id == 68:                 return "Oboe", "Ob."
-    if prog_id == 71:                 return "Clarinet", "Cl."
-    if prog_id == 70:                 return "Bassoon", "Bsn."
-    if 64 <= prog_id <= 67:           return "Saxophone", "Sax."
-    if prog_id == 69:                 return "English Horn", "E.Hn."
-
-    # Percussion
-    if prog_id == 47:                 return "Timpani", "Timp."
-    if 9 <= prog_id <= 15:            return "Mallet Percussion", "Mallet"
-
-    # Synth / Other (SymphonyNet 清洗重点)
-    if prog_id in [50, 51, 55]:       return "Synth Strings", "Syn.Str."  # 隔离电子弦乐
-    if 80 <= prog_id <= 103:          return "Synthesizer", "Synth."
-
-    # Default fallback
-    return get_gm_name(prog_id), "Inst."
+    # Fallback
+    return GM_INSTRUMENTS.get(prog_id, "Instrument"), "Inst."
 
 
 # ==========================================
 # 3. 核心扫描任务 (单文件)
 # ==========================================
 def scan_file_task(args):
-    """
-    扫描单个文件，返回：
-    1. 文件路径
-    2. 乐器列表: [(key, track_name), ...]
-       注意：这里我们把 track_name 也带出来，做深度统计
-    """
     f_path, input_dir = args
     instruments_found = []
 
@@ -130,7 +181,6 @@ def scan_file_task(args):
 
             for msg in track:
                 if msg.type == 'track_name':
-                    # 清洗一下名字，去掉乱码或多余空格
                     current_track_name = msg.name.strip()
 
                 elif msg.type == 'program_change':
@@ -142,12 +192,8 @@ def scan_file_task(args):
                 elif msg.type == 'note_on' and msg.velocity > 0:
                     track_has_notes = True
 
-            # 如果这个轨道有音符，我们才记录它的乐器信息
-            # 避免记录那些只有控制信息没有音符的空轨道
             if track_has_notes and program_change_events:
                 for key in program_change_events:
-                    # 记录 (乐器ID, 该轨道的名字)
-                    # 例如: ('PROG_40', 'Violin I')
                     instruments_found.append((key, current_track_name))
 
     except Exception:
@@ -160,23 +206,18 @@ def scan_file_task(args):
 # 4. 主程序
 # ==========================================
 def scan_dataset(input_dir, output_file):
-    print(f"Deep Scanning MIDI files in: {input_dir}")
+    print(f"Scientific Scanning MIDI files in: {input_dir}")
 
-    # 1. 收集文件
     all_files = []
     for root, _, files in os.walk(input_dir):
         for f in files:
             if f.lower().endswith(('.mid', '.midi')):
                 all_files.append(os.path.join(root, f))
 
-    print(f"Found {len(all_files)} MIDI files. Launching parallel scouts...")
+    print(f"Found {len(all_files)} MIDI files. Launching analysis...")
 
-    # 2. 并行处理
-    # 统计器：{ "PROG_40": count }
     prog_counter = Counter()
-    # 名字统计器：{ "PROG_40": Counter({"Violin I": 500, "Violin II": 400...}) }
     name_dist_counter = defaultdict(Counter)
-    # 样本文件：{ "PROG_40": [file1, file2...] }
     example_files = defaultdict(list)
 
     tasks = [(f, input_dir) for f in all_files]
@@ -184,77 +225,68 @@ def scan_dataset(input_dir, output_file):
     with ProcessPoolExecutor() as executor:
         results = list(tqdm(executor.map(scan_file_task, tasks), total=len(tasks), unit="file"))
 
-    # 3. 汇总数据
-    print(" Aggregating statistics...")
+    print(" Aggregating statistics and applying scientific taxonomy...")
     for res in results:
         if res is None: continue
         f_path, inst_list = res
 
-        # 计算相对路径
         try:
             rel_path = os.path.relpath(f_path, input_dir)
         except:
             rel_path = os.path.basename(f_path)
 
         for key, track_name in inst_list:
-            # 统计 Program ID 出现次数
             prog_counter[key] += 1
-
-            # 统计该 ID 下各种 Track Name 的分布
-            # 只有当名字不是默认的 Unknown 或空时才记录，减少噪音
             if track_name and track_name != "Unknown":
                 name_dist_counter[key][track_name] += 1
-
-            # 记录样本
             if len(example_files[key]) < 5:
                 example_files[key].append(rel_path)
 
-    # 4. 生成详细报告 (JSON)
+    # 生成映射报告
     mapping_data = {}
 
-    for key, count in prog_counter.most_common():
-        # 获取基本信息
-        if key == "DRUM":
-            raw_desc = "Percussion (Channel 10)"
-            pid = -1
-            base_name, base_abbr = "Percussion", "Perc."
-        else:
-            pid = int(key.split('_')[1])
-            raw_desc = get_gm_name(pid)
-            base_name, base_abbr = get_smart_category(pid)
+    # 遍历所有出现过的 Program ID，或者遍历整个 SCIENTIFIC_MAPPING 确保全覆盖
+    # 这里我们遍历 SCIENTIFIC_MAPPING 确保 JSON 完整，即便数据集中没出现的乐器也有定义
+    # 同时合并扫描到的统计信息
 
-        # 获取该乐器最常出现的 Top 5 轨道名
-        top_names = name_dist_counter[key].most_common(5)
-        # 格式化一下: "Violin I (120 files)"
-        top_names_str = [f"{n} ({c})" for n, c in top_names]
+    # 1. 先处理 DRUM
+    drum_key = "DRUM"
+    mapping_data[drum_key] = {
+        "frequency": prog_counter[drum_key],
+        "gm_description": "Percussion (Channel 10)",
+        "target_xml_name": "Percussion",
+        "target_xml_abbr": "Perc.",
+        "top_track_names": [f"{n} ({c})" for n, c in name_dist_counter[drum_key].most_common(5)],
+        "example_files": example_files[drum_key]
+    }
+
+    # 2. 处理所有 Program ID (0-127)
+    for pid in range(128):
+        key = f"PROG_{pid}"
+        base_name, base_abbr = get_smart_category(pid)
 
         mapping_data[key] = {
-            "frequency": count,
-            "gm_description": raw_desc,
-
-            # === 核心配置区 ===
-            "target_xml_name": base_name,  # 基础名 (Violin)
-            "target_xml_abbr": base_abbr,  # 基础缩写 (Vln.)
-
-            # === 深度侦察结果 ===
-            # 让你确认是否需要开启“细粒度控制”
-            "top_track_names": top_names_str,
-            "example_files": example_files[key]
+            "target_xml_name": base_name,
+            "target_xml_abbr": base_abbr
         }
 
-    # 5. 保存
+        # 如果数据集中出现了这个乐器，补充统计信息
+        if prog_counter[key] > 0:
+            mapping_data[key]["frequency"] = prog_counter[key]
+            mapping_data[key]["gm_description"] = get_gm_name(pid)
+            mapping_data[key]["top_track_names"] = [f"{n} ({c})" for n, c in name_dist_counter[key].most_common(5)]
+            mapping_data[key]["example_files"] = example_files[key]
+
     os.makedirs(os.path.dirname(output_file) or '.', exist_ok=True)
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(mapping_data, f, indent=4)
 
-    print(f"\n [Success] Master Mapping generated: {output_file}")
+    print(f"\n [Success] Scientific Mapping generated: {output_file}")
     print("-" * 60)
-    print("💡 How to use this file:")
-    print("1. Open the JSON.")
-    print("2. Look at 'top_track_names'. If you see 'Violin I', 'Violin II' there,")
-    print("   it proves your dataset HAS fine-grained labels.")
-    print("3. 'target_xml_name' is the BASE name. The next script will use this")
-    print("   PLUS the track numbers (I/II) found in the file to generate final names.")
+    print("Rationale applied:")
+    print("1. Separation of excitation mechanisms (Piano vs Guitar vs Harpsichord)")
+    print("2. Distinction of frequency formants (Violin vs Viola vs Cello)")
+    print("3. Independence of articulations (Pizzicato/Tremolo preserved)")
     print("-" * 60)
 
 

@@ -7,18 +7,16 @@ import re
 import signal
 import shutil
 import xml.etree.ElementTree as ET
-from collections import Counter
 from tqdm import tqdm
 from multiprocessing import Pool
 
 # =================配置区=================
 DEFAULT_DATASET_ROOT = "raw/SymphonyNet_dataset/SymphonyNet_dataset"
 OUTPUT_XML_ROOT = "raw/mxl/SymphonyNet_dataset"
-MAPPING_FILE = "instrument_mapping_master.json"
-DEFAULT_TIMEOUT = 300  # 给足时间
+MAPPING_FILE = "instrument_mapping_master.json"  # 确保路径正确
+DEFAULT_TIMEOUT = 300
 
 # Windows MuseScore 路径 (WSL格式)
-# 请确保这是你刚才确认过的路径
 MUSESCORE_CMD = "/mnt/c/Program Files/MuseScore 4/bin/MuseScore4.exe"
 # =======================================
 
@@ -48,74 +46,105 @@ def timeout_handler(signum, frame):
     raise TimeoutError
 
 
-# --- [核心修复] 路径转换函数 ---
 def wsl_to_win_path(wsl_path):
-    """
-    调用 wslpath 工具，将 WSL 的 /mnt/d/... 转换为 Windows 的 D:\...
-    """
     try:
-        # 获取绝对路径
         abs_path = os.path.abspath(wsl_path)
-        # 调用系统命令转换
         result = subprocess.check_output(['wslpath', '-w', abs_path], text=True)
         return result.strip()
-    except Exception as e:
-        return None
-
-
-def get_target_instrument_name(midi_path):
-    try:
-        import mido
-        mid = mido.MidiFile(midi_path, clip=True)
     except Exception:
         return None
 
-    prog_counts = Counter()
-    for track in mid.tracks:
-        for msg in track:
-            if msg.type == 'program_change':
-                if msg.channel == 9:
-                    key = "DRUM_Channel_10"
-                else:
-                    key = f"PROG_{msg.program}"
-                if key in GLOBAL_MAPPING:
-                    prog_counts[key] += 1
 
-    if not prog_counts:
-        return "Piano"
+# --- [核心修复] 移除旧的 get_target_instrument_name，新增以下函数 ---
 
-    most_common_key = prog_counts.most_common(1)[0][0]
-    return GLOBAL_MAPPING[most_common_key]["target_xml_name"]
-
-
-def inject_name_into_xml(xml_path, target_name):
+def standardize_xml_parts(xml_path):
+    """
+    读取 MuseScore 生成的 XML，遍历每个 score-part。
+    根据该 Part 内部保留的 midi-instrument/midi-program 信息，
+    去查 GLOBAL_MAPPING，实现“每个声部独立命名”。
+    """
     try:
         tree = ET.parse(xml_path)
         root = tree.getroot()
         part_list = root.find('part-list')
-        if part_list is not None:
-            for score_part in part_list.findall('score-part'):
+
+        if part_list is None:
+            return False
+
+        changed = False
+
+        for score_part in part_list.findall('score-part'):
+            # 1. 获取该声部的 MIDI 信息
+            midi_inst = score_part.find('midi-instrument')
+            if midi_inst is None:
+                continue
+
+            channel_elem = midi_inst.find('midi-channel')
+            program_elem = midi_inst.find('midi-program')
+
+            mapping_key = None
+
+            # 2. 确定 Mapping Key
+            # A. 检查是否为打击乐 (Channel 10)
+            if channel_elem is not None:
+                try:
+                    chan = int(channel_elem.text)
+                    # MusicXML channel 通常是 1-based (10) 或 0-based (9)
+                    if chan == 10 or chan == 9:
+                        mapping_key = "DRUM"
+                except:
+                    pass
+
+            # B. 如果不是打击乐，读取 Program Change
+            if not mapping_key and program_elem is not None:
+                try:
+                    prog_id = int(program_elem.text)
+                    # MuseScore 输出通常对应 MIDI (1-based)，所以可能需要 -1
+                    # 先尝试 -1 (匹配 0-127 标准)
+                    key_try = f"PROG_{prog_id - 1}"
+                    if key_try in GLOBAL_MAPPING:
+                        mapping_key = key_try
+                    else:
+                        # 备选：尝试不减 1
+                        key_try = f"PROG_{prog_id}"
+                        if key_try in GLOBAL_MAPPING:
+                            mapping_key = key_try
+                except:
+                    pass
+
+            # 3. 执行映射 (如果找到了对应的 Key)
+            if mapping_key and mapping_key in GLOBAL_MAPPING:
+                target_info = GLOBAL_MAPPING[mapping_key]
+                target_name = target_info["target_xml_name"]  # e.g., "Violin"
+                target_abbr = target_info["target_xml_abbr"]  # e.g., "Vln."
+
+                # 修改 XML 中的 part-name
                 pn = score_part.find('part-name')
-                if pn is not None:
-                    pn.text = target_name
-                else:
-                    new_pn = ET.SubElement(score_part, 'part-name')
-                    new_pn.text = target_name
+                if pn is None:
+                    pn = ET.SubElement(score_part, 'part-name')
+                pn.text = target_name
+
+                # 修改 XML 中的 part-abbreviation
                 pa = score_part.find('part-abbreviation')
-                if pa is not None:
-                    pa.text = target_name[:3]
-        tree.write(xml_path, encoding="UTF-8", xml_declaration=True)
-        return True
-    except:
+                if pa is None:
+                    pa = ET.SubElement(score_part, 'part-abbreviation')
+                pa.text = target_abbr
+
+                changed = True
+
+        if changed:
+            tree.write(xml_path, encoding="UTF-8", xml_declaration=True)
+            return True
+        return True  # 即使没改动也算成功（可能是没匹配到）
+
+    except Exception as e:
         return False
 
 
 def process_file(file_info):
     src_path, rel_path, timeout_limit = file_info
-
-    # 这里的路径操作依然使用 Linux 路径
     dest_path = os.path.join(OUTPUT_XML_ROOT, os.path.splitext(rel_path)[0] + ".xml")
-    temp_dest_path = dest_path + ".tmp.xml"  # 加 .xml 后缀，MuseScore 对后缀敏感
+    temp_dest_path = dest_path + ".tmp.xml"
 
     if os.path.exists(dest_path):
         return "skipped_exists"
@@ -125,25 +154,19 @@ def process_file(file_info):
         signal.alarm(timeout_limit)
 
     try:
-        # 1. 分析 (Python 读 Linux 路径，没问题)
-        target_name = get_target_instrument_name(src_path)
-        if not target_name:
-            return "error_midi_read"
-
-        # 2. 转换 (关键修复！)
         os.makedirs(os.path.dirname(dest_path), exist_ok=True)
 
-        # [修复点] 将 Linux 路径转换为 Windows 路径传给 EXE
+        # 1. 转换路径
         win_src_path = wsl_to_win_path(src_path)
-        win_out_path = wsl_to_win_path(os.path.abspath(temp_dest_path))  # 必须是绝对路径才能转换
+        win_out_path = wsl_to_win_path(os.path.abspath(temp_dest_path))
 
         if not win_src_path or not win_out_path:
             return "error_path_conversion"
 
-        # 调用 Windows 程序，传入 Windows 路径
+        # 2. 调用 MuseScore 转换
+        # 注意：不再预先读取 MIDI 分析 instrument，直接转！
         cmd = [MUSESCORE_CMD, "-o", win_out_path, win_src_path]
 
-        # 这里的 subprocess 是在 WSL 里跑，但它启动的是 Windows 进程
         result = subprocess.run(
             cmd,
             stdout=subprocess.DEVNULL,
@@ -151,19 +174,16 @@ def process_file(file_info):
             timeout=timeout_limit - 10
         )
 
-        if result.returncode != 0:
+        if result.returncode != 0 or not os.path.exists(temp_dest_path):
             if os.path.exists(temp_dest_path): os.remove(temp_dest_path)
             return f"error_musescore_code_{result.returncode}"
 
-        # 检查输出是否存在 (Python 检查 Linux 路径，因为它们指向同一个文件)
-        if not os.path.exists(temp_dest_path):
-            return "error_musescore_no_output"
+        # 3. 【关键步骤】标准化 XML 中的声部名称
+        success = standardize_xml_parts(temp_dest_path)
 
-        # 3. 注入 (Python 读 Linux 路径，没问题)
-        success = inject_name_into_xml(temp_dest_path, target_name)
         if not success:
             if os.path.exists(temp_dest_path): os.remove(temp_dest_path)
-            return "error_xml_inject"
+            return "error_xml_standardize"
 
         # 4. 完成
         os.rename(temp_dest_path, dest_path)
@@ -181,7 +201,7 @@ def process_file(file_info):
 
 
 def main():
-    global MUSESCORE_CMD  # 声明全局变量
+    global MUSESCORE_CMD
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--input_dir", type=str, default=DEFAULT_DATASET_ROOT)
@@ -192,36 +212,28 @@ def main():
 
     MUSESCORE_CMD = args.mscore_cmd
 
-    # 验证 MuseScore (简单检查文件是否存在)
     if not os.path.exists(MUSESCORE_CMD):
         print(f"Error: MuseScore not found at '{MUSESCORE_CMD}'")
-        print("Please check the path.")
         return
 
     try:
         mapping = load_mapping()
     except Exception as e:
         print(f"Mapping error: {e}")
+        print("Make sure you have run 'data/scan_instruments.py' first!")
         return
 
     print("Preparing file list...")
     tasks = []
-    sub_dirs = ['classical', 'contemporary']
-
-    for sub in sub_dirs:
-        dir_path = os.path.join(args.input_dir, sub)
-        if not os.path.exists(dir_path): continue
-
-        for root, _, files in os.walk(dir_path):
-            for f in files:
-                if f.lower().endswith(('.mid', '.midi')):
-                    full_path = os.path.join(root, f)
-                    rel_path = os.path.relpath(full_path, args.input_dir)
-                    tasks.append((full_path, rel_path, args.timeout))
+    # 自动扫描所有子目录
+    for root, _, files in os.walk(args.input_dir):
+        for f in files:
+            if f.lower().endswith(('.mid', '.midi')):
+                full_path = os.path.join(root, f)
+                rel_path = os.path.relpath(full_path, args.input_dir)
+                tasks.append((full_path, rel_path, args.timeout))
 
     print(f" Starting conversion for {len(tasks)} files...")
-    print(f" Using: {MUSESCORE_CMD}")
-    print(f" Workers: {args.workers}")
 
     stats = {"success": 0, "skipped": 0, "timeout": 0, "error": 0}
     error_log = open("convert_errors_mscore.log", "a", encoding="utf-8")
@@ -238,7 +250,6 @@ def main():
             else:
                 stats["error"] += 1
                 error_log.write(f"FAIL: {res}\n")
-
             error_log.flush()
 
     error_log.close()

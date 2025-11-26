@@ -1,5 +1,6 @@
 *.pth
 /data/raw/*
+/data/preprocessed/*
 !/data/raw/.gitkeep
 *.abc
 *.xml
