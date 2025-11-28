@@ -3,7 +3,7 @@
 python main.py \
   --mode baseline \
   --backbone llama \
-  --exp_name baseline_v1 \
+  --exp_name llama_v1 \
   --batch_size 4 \
   --lr 1e-4 \
   --epochs 20

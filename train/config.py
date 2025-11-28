@@ -1,8 +1,8 @@
 import os
 
 # Configuration for the data
-DATA_TRAIN_INDEX_PATH = "data/preprocessed/SympohonyNet_dataset/symphonynet_augmented_train.jsonl.jsonl"
-DATA_EVAL_INDEX_PATH  = "data/preprocessed/SympohonyNet_dataset/symphonynet_augmented_eval.jsonl"
+DATA_TRAIN_INDEX_PATH = "data/preprocessed/SymphonyNet_dataset/symphonynet_augmented_train.jsonl"
+DATA_EVAL_INDEX_PATH  = "data/preprocessed/SymphonyNet_dataset/symphonynet_augmented_eval.jsonl"
 
 # Configuration for the model
 PATCH_STREAM = True                                             # Stream training / inference
@@ -21,6 +21,12 @@ PATCH_SAMPLING_BATCH_SIZE = 0                                   # Batch size for
 LOAD_FROM_CHECKPOINT = False                                    # Whether to load weights from a checkpoint
 WANDB_LOGGING = False                                           # Whether to log to wandb
 WANDB_KEY = '<your_wandb_key>'
+
+# --- [新增] 为了防止 main.py 报错必须定义的变量 ---
+# 即使是 Baseline 模式，这些变量也必须存在，但可以是空值
+TEACHER_CKPT = None                                             # Baseline 模式下不使用，设为 None 即可
+ALPHA_KD = 0.0                                                  # 蒸馏权重
+BETA_PHY = 0.0                                                  # 物理约束权重
 
 PRETRAINED_PATH = ""                 # Path of pretrained weights
 EXP_TAG = ''                                                    # Experiment tag for name differentiation

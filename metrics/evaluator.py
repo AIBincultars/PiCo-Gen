@@ -3,7 +3,7 @@ import torch.nn.functional as F
 from tqdm import tqdm
 import math
 from .physics import PhysicsMetrics
-from .musicality import MusicalityMetrics  # [新增导入]
+from .musicality import MusicalityMetrics
 
 
 class Evaluator:
@@ -40,29 +40,37 @@ class Evaluator:
 
                 # 1. 前向传播
                 outputs = self.model(patches, masks)
-                logits = outputs['logits']  # [B, S, V]
+                logits = outputs['logits']  # 形状: [Batch, Seq, Patch, Vocab]
 
-                # 2. 计算基础 Loss
-                shift_logits = logits[..., :-1, :].contiguous()
-                shift_labels = patches[..., 1:].contiguous()
+                # 2. 计算基础 Loss (需要 Patch 级别的 Shift)
+                # 移除最后一个时间步的 Logits 和第一个时间步的 Labels
+                shift_logits = logits[:, :-1, :, :].contiguous()
+                shift_labels = patches[:, 1:, :].contiguous()
+
                 loss = F.cross_entropy(
                     shift_logits.view(-1, shift_logits.size(-1)),
                     shift_labels.view(-1),
                     ignore_index=0
                 )
 
-                # 3. 获取预测序列 (Hard Prediction) 用于计算多样性
-                # 使用 argmax 获取概率最大的 token
-                pred_tokens = torch.argmax(logits, dim=-1)
+                # --- [关键修改] 展平 Patch 维度用于指标计算 ---
+                # 我们希望把数据看作连续的音符流，而不是分块的 Patch
+                # 形状变换: [Batch, Seq, Patch, Vocab] -> [Batch, Seq*Patch, Vocab]
+                b, s, p, v = logits.shape
+                flat_logits = logits.view(b, s * p, v)
 
-                # 4. 计算各项指标
-                # 物理规律 (Power Law 距离)
-                phy_stat = self.phy_metrics.calculate_pitch_interval_stat(logits)
+                # 获取预测序列 (Hard Prediction)
+                # 形状: [Batch, Seq*Patch] -> 这样每个元素就是一个 Token ID
+                pred_tokens = torch.argmax(flat_logits, dim=-1)
+
+                # 3. 计算各项指标
+                # 物理规律 (传入展平后的 Logits，以计算相邻 Token 间的音程)
+                phy_stat = self.phy_metrics.calculate_pitch_interval_stat(flat_logits)
                 phy_score = abs(phy_stat - 2.5)  # 目标值 2.5
 
-                # 音乐性 & 生成质量
+                # 音乐性 & 生成质量 (传入展平后的 Token 序列)
                 div_score = self.music_metrics.calculate_diversity(pred_tokens, n=3)
-                ent_score = self.music_metrics.calculate_pitch_entropy(logits)
+                ent_score = self.music_metrics.calculate_pitch_entropy(flat_logits)
 
                 # 累加
                 metrics_sum["loss"] += loss.item()
@@ -72,18 +80,18 @@ class Evaluator:
                 total_steps += 1
 
         # 计算平均值
-        avg_metrics = {k: v / total_steps for k, v in metrics_sum.items()}
+        avg_metrics = {k: v / total_steps for k, v in metrics_sum.items() if total_steps > 0}
 
         # 计算 PPL
         try:
-            ppl = math.exp(avg_metrics["loss"])
+            ppl = math.exp(avg_metrics.get("loss", 0))
         except OverflowError:
             ppl = float('inf')
 
         return {
-            "val_loss": avg_metrics["loss"],
+            "val_loss": avg_metrics.get("loss", 0),
             "ppl": ppl,
-            "phy_dist": avg_metrics["phy_dist"],  # 越接近 0 越符合物理规律
-            "diversity": avg_metrics["diversity"],  # 越高越好 (0-1)
-            "entropy": avg_metrics["entropy"]  # 适中为好 (过低单调，过高杂乱)
+            "phy_dist": avg_metrics.get("phy_dist", 0),
+            "diversity": avg_metrics.get("diversity", 0),
+            "entropy": avg_metrics.get("entropy", 0)
         }

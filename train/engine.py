@@ -1,6 +1,8 @@
 import os
 import glob
+import time
 import torch
+import wandb
 from torch.optim import AdamW
 from torch.utils.data import DataLoader
 from transformers import GPT2Config, get_cosine_schedule_with_warmup
@@ -21,22 +23,46 @@ class ExperimentRunner:
         self.args = args
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-        # 修改：保存路径统一到 checkpoints/ 目录下
-        self.ckpt_dir = os.path.join("checkpoints")
+        # 1. 准备保存路径 [核心修改]
+        # 结构: checkpoints/{exp_name}/
+        self.ckpt_dir = os.path.join("checkpoints", self.args.exp_name)
         os.makedirs(self.ckpt_dir, exist_ok=True)
+        print(f">>> Checkpoints will be saved to: {self.ckpt_dir}")
+
+        # 2. 准备日志文件
+        # 将日志也放在该目录下，方便管理
+        self.log_path = os.path.join(self.ckpt_dir, "training_log.txt")
+
+        print(f">>> Logs will be saved to: {self.log_path}")
+
+        # 如果是第一次运行（非追加），写入表头
+        if not os.path.exists(self.log_path):
+            with open(self.log_path, 'w') as f:
+                f.write("Epoch,Train_Loss,Val_Loss,PPL,Phy_Dist,Time\n")
 
         self.start_epoch = 1
+        self.best_val_loss = float('inf')  # 初始化最佳 Loss 为无穷大
+
+        # 3. 初始化 WandB
+        if cfg.WANDB_LOGGING:
+            wandb.init(
+                project="picogen-baseline",
+                name=self.args.exp_name,
+                config={
+                    "lr": self.args.lr,
+                    "batch_size": self.args.batch_size,
+                    "backbone": self.args.backbone,
+                    "model_config": cfg.NAME
+                }
+            )
 
     def _get_model_name(self):
-        """
-        生成类似 NotaGen 风格的模型名称
-        """
+        """生成模型基础名称 (NotaGen 风格)"""
+        # e.g. weights_picogen_baseline_v1_llama_lr1e-05_bz4
         name = (f"weights_picogen_{self.args.exp_name}_"
-                f"backbone_{self.args.backbone}_"
-                f"h_{cfg.HIDDEN_SIZE}_"
-                f"L_{cfg.PATCH_NUM_LAYERS}_"
-                f"lr_{self.args.lr}_"
-                f"bz_{self.args.batch_size}")
+                f"{self.args.backbone}_"
+                f"lr{self.args.lr}_"
+                f"bz{self.args.batch_size}")
         return name
 
     def _load_teacher(self):
@@ -61,7 +87,7 @@ class ExperimentRunner:
         print(f">>> Initializing Student (Backbone: {self.args.backbone})...")
         s_config = PiCoGenConfig(
             backbone_type=self.args.backbone,
-            hidden_size=cfg.HIDDEN_SIZE // 2,  # 示例：学生模型Hidden Size
+            hidden_size=cfg.HIDDEN_SIZE // 2,
             num_hidden_layers=12,
             teacher_hidden_size=1280,
             patch_size=cfg.PATCH_SIZE,
@@ -72,91 +98,142 @@ class ExperimentRunner:
 
     def _resume_checkpoint(self, model, optimizer, scheduler):
         """
-        断点续训逻辑：自动查找最新的 checkpoint
+        断点续训逻辑：
+        直接寻找 {ckpt_dir}/{model_name}_last.pth
         """
         model_name_prefix = self._get_model_name()
-        # 在 checkpoints 文件夹中查找匹配当前实验配置的文件
-        search_pattern = os.path.join(self.ckpt_dir, f"{model_name_prefix}_epoch_*.pth")
-        ckpts = glob.glob(search_pattern)
+        last_ckpt_path = os.path.join(self.ckpt_dir, f"{model_name_prefix}_last.pth")
 
-        if len(ckpts) > 0:
-            # 按 epoch 排序，取最后一个
-            ckpts.sort(key=os.path.getmtime)
-            latest_ckpt = ckpts[-1]
-            print(f">>> Resuming from checkpoint: {latest_ckpt}")
+        if os.path.exists(last_ckpt_path):
+            print(f">>> Found last checkpoint: {last_ckpt_path}")
+            try:
+                checkpoint = torch.load(last_ckpt_path, map_location=self.device)
 
-            checkpoint = torch.load(latest_ckpt, map_location=self.device)
-            model.load_state_dict(checkpoint['model_state_dict'])
-            if 'optimizer_state_dict' in checkpoint and optimizer:
-                optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-            if 'scheduler_state_dict' in checkpoint and scheduler:
-                scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
-            if 'epoch' in checkpoint:
-                self.start_epoch = checkpoint['epoch'] + 1
+                # 恢复模型和优化器状态
+                model.load_state_dict(checkpoint['model_state_dict'])
+                if 'optimizer_state_dict' in checkpoint and optimizer:
+                    optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+                if 'scheduler_state_dict' in checkpoint and scheduler:
+                    scheduler.load_state_dict(checkpoint['scheduler_state_dict'])
 
-            print(f">>> Resumed training from Epoch {self.start_epoch}")
+                # 恢复训练进度
+                if 'epoch' in checkpoint:
+                    self.start_epoch = checkpoint['epoch'] + 1
+
+                # 恢复最佳 Loss，防止误覆盖
+                if 'best_val_loss' in checkpoint:
+                    self.best_val_loss = checkpoint['best_val_loss']
+
+                print(
+                    f">>> Resumed training from Epoch {self.start_epoch}. Best Val Loss so far: {self.best_val_loss:.4f}")
+            except Exception as e:
+                print(f"Error loading checkpoint: {e}. Starting from scratch.")
         else:
             print(">>> No checkpoint found. Starting from scratch.")
 
     def run(self):
-        # 1. 数据
+        # --- 数据加载 ---
         print(f"Loading dataset from {self.args.train_data}")
-        # 注意：这里使用了之前修复过路径问题的 Dataset 类
         train_ds = SymphonyDataset(self.args.train_data, patch_len=cfg.PATCH_LENGTH)
-        # 尝试加载验证集
+
         eval_ds = None
         if hasattr(cfg, 'DATA_EVAL_INDEX_PATH') and os.path.exists(cfg.DATA_EVAL_INDEX_PATH):
+            print(f"Loading eval dataset from {cfg.DATA_EVAL_INDEX_PATH}")
             eval_ds = SymphonyDataset(cfg.DATA_EVAL_INDEX_PATH, patch_len=cfg.PATCH_LENGTH)
+        else:
+            print("Warning: No eval dataset found. Metrics will be zero.")
 
         train_loader = DataLoader(train_ds, batch_size=self.args.batch_size, shuffle=True, collate_fn=collate_fn,
                                   num_workers=4)
         eval_loader = DataLoader(eval_ds, batch_size=self.args.batch_size, collate_fn=collate_fn) if eval_ds else None
 
-        # 2. 模型与优化器
+        # --- 模型准备 ---
         student = self._init_student()
         optimizer = AdamW(student.parameters(), lr=self.args.lr)
         total_steps = self.args.epochs * len(train_loader)
         scheduler = get_cosine_schedule_with_warmup(optimizer, num_warmup_steps=100, num_training_steps=total_steps)
 
-        # 3. 断点续训检查
-        # 假设 args 中有个 --resume 参数，或者是默认开启检查
+        # 恢复训练
         self._resume_checkpoint(student, optimizer, scheduler)
 
-        # 4. 准备 Evaluator
+        # 评估器
         evaluator = Evaluator(student, eval_loader, self.device) if eval_loader else None
 
-        # 5. 选择 Trainer
+        # --- 选择 Trainer ---
         if self.args.mode == "distill":
             teacher = self._load_teacher()
-            trainer = PiCoDistiller(student, teacher, train_loader, optimizer, self.device,
-                                    alpha_kd=self.args.alpha_kd, beta_phy=self.args.beta_phy)
+            trainer = PiCoDistiller(
+                student=student, teacher=teacher, dataloader=train_loader,
+                optimizer=optimizer, device=self.device,
+                alpha_kd=self.args.alpha_kd, beta_phy=self.args.beta_phy
+            )
         else:
             trainer = StandardTrainer(student, train_loader, optimizer, self.device)
 
-        # 6. 训练循环
+        # --- 训练循环 ---
         print(f">>> Start Training from Epoch {self.start_epoch} to {self.args.epochs}...")
+
         for epoch in range(self.start_epoch, self.args.epochs + 1):
-            avg_loss = trainer.train_epoch(epoch)
+            start_time = time.time()
+
+            # 1. 训练
+            train_loss = trainer.train_epoch(epoch)
             scheduler.step()
 
-            log_str = f"Epoch {epoch} | Train Loss: {avg_loss:.4f}"
+            # 2. 评估
+            val_loss = float('inf')
+            ppl = 0.0
+            phy_dist = 0.0
 
-            # 验证
             if evaluator:
                 metrics = evaluator.evaluate()
-                log_str += f" | Val Loss: {metrics['val_loss']:.4f} | PPL: {metrics['ppl']:.2f} | Phy Dist: {metrics['phy_dist']:.4f}"
+                val_loss = metrics['val_loss']
+                ppl = metrics['ppl']
+                phy_dist = metrics.get('phy_dist', 0.0)
 
+            epoch_time = time.time() - start_time
+
+            # 3. 日志
+            log_str = (f"Epoch {epoch} | Time: {epoch_time:.1f}s | "
+                       f"Train Loss: {train_loss:.4f} | Val Loss: {val_loss:.4f} | "
+                       f"PPL: {ppl:.2f}")
             print(log_str)
 
-            # 保存 Checkpoint
-            model_name = self._get_model_name()
-            save_path = os.path.join(self.ckpt_dir, f"{model_name}_epoch_{epoch}.pth")
+            with open(self.log_path, 'a') as f:
+                f.write(f"{epoch},{train_loss:.5f},{val_loss:.5f},{ppl:.5f},{phy_dist:.5f},{epoch_time:.1f}\n")
 
-            torch.save({
+            if cfg.WANDB_LOGGING:
+                wandb.log({
+                    "epoch": epoch,
+                    "train_loss": train_loss,
+                    "val_loss": val_loss,
+                    "ppl": ppl,
+                    "phy_dist": phy_dist,
+                    "lr": optimizer.param_groups[0]['lr']
+                })
+
+            # 4. 保存模型 [核心修改]
+            model_name = self._get_model_name()
+
+            # 准备 Checkpoint 字典
+            ckpt_dict = {
                 'epoch': epoch,
                 'model_state_dict': student.state_dict(),
                 'optimizer_state_dict': optimizer.state_dict(),
                 'scheduler_state_dict': scheduler.state_dict(),
-                'loss': avg_loss,
-            }, save_path)
-            print(f"Saved checkpoint: {save_path}")
+                'loss': train_loss,
+                'best_val_loss': self.best_val_loss
+            }
+
+            # A. 始终保存/覆盖 last.pth (用于续训)
+            last_path = os.path.join(self.ckpt_dir, f"{model_name}_last.pth")
+            torch.save(ckpt_dict, last_path)
+
+            # B. 如果性能更好，保存/覆盖 best.pth (用于推理)
+            if val_loss < self.best_val_loss:
+                print(f"Validation Loss Improved ({self.best_val_loss:.4f} -> {val_loss:.4f}). Saving best model...")
+                self.best_val_loss = val_loss
+                ckpt_dict['best_val_loss'] = val_loss  # 更新字典中的最佳值
+
+                best_path = os.path.join(self.ckpt_dir, f"{model_name}_best.pth")
+                torch.save(ckpt_dict, best_path)
