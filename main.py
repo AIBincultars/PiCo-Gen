@@ -17,7 +17,7 @@ def main():
 
     # --- 路径配置 ---
     parser.add_argument("--save_dir", type=str, default="weights/", help="权重保存路径")
-    parser.add_argument("--train_data", type=str, default=train_cfg.DATA_INDEX_PATH, help="训练数据路径")
+    parser.add_argument("--train_data", type=str, default=train_cfg.DATA_TRAIN_INDEX_PATH, help="训练数据路径")
     parser.add_argument("--teacher_ckpt", type=str, default=train_cfg.TEACHER_CKPT,
                         help="Teacher权重路径(仅distill模式需要)")
 

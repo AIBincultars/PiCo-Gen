@@ -1,8 +1,8 @@
 import os
 
 # Configuration for the data
-DATA_TRAIN_INDEX_PATH = "data/preprocessed/SympohonyNet_dataset/train.jsonl"
-DATA_EVAL_INDEX_PATH  = "data/preprocessed/SympohonyNet_dataset/eval.jsonl"
+DATA_TRAIN_INDEX_PATH = "data/preprocessed/SympohonyNet_dataset/symphonynet_augmented_train.jsonl.jsonl"
+DATA_EVAL_INDEX_PATH  = "data/preprocessed/SympohonyNet_dataset/symphonynet_augmented_eval.jsonl"
 
 # Configuration for the model
 PATCH_STREAM = True                                             # Stream training / inference
