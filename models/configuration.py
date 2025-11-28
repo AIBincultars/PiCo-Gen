@@ -1,4 +1,6 @@
-from transformers import PretrainedConfig, LlamaConfig
+from transformers import PretrainedConfig
+
+
 
 class PiCoGenConfig(PretrainedConfig):
     model_type = "picogen"
