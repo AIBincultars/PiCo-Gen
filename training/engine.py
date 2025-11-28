@@ -9,7 +9,7 @@ from transformers import GPT2Config, get_cosine_schedule_with_warmup
 # Import from our modules
 from models.teacher import NotaGenLMHeadModel
 from models.student import PiCoGen, PiCoGenConfig
-from training.dataset import SymphonyDataset, collate_fn
+from data.dataset import SymphonyDataset, collate_fn
 from training.losses import PhysicsAwareLoss
 
 
