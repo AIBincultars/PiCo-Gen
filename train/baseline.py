@@ -29,16 +29,23 @@ class StandardTrainer:
             outputs = self.student(patches, masks)
             logits = outputs['logits']  # [Batch, Seq_Len, Vocab_Size]
 
-            # 3. 计算损失 (Loss)
-            # 这里使用标准的分类损失：预测每个位置的 Token ID
-            # view(-1, ...) 将 Batch 和 Sequence 维度展平，以便计算 CrossEntropy
-            vocab_size = logits.size(-1)
+            # 3. 计算损失 (Loss) - [修正核心]
+            # 自回归训练需要“错位”预测：
+            # Input:  [A, B, C, D]
+            # Target: [B, C, D, E]
 
-            # 注意：ignore_index=0 是因为你的 tokenizer 中 pad_token_id 通常为 0
-            # 如果你的 padding id 不是 0，请修改这里
+            # 移除 Logits 的最后一个时间步
+            shift_logits = logits[..., :-1, :].contiguous()
+            # 移除 Labels 的第一个时间步
+            shift_labels = patches[..., 1:].contiguous()
+
+            # 展平以便计算 CrossEntropy
+            vocab_size = shift_logits.size(-1)
+
+            # 注意：ignore_index=0 对应 Padding Token ID
             loss = F.cross_entropy(
-                logits.view(-1, vocab_size),
-                patches.view(-1),
+                shift_logits.view(-1, vocab_size),
+                shift_labels.view(-1),
                 ignore_index=0
             )
 
@@ -46,7 +53,7 @@ class StandardTrainer:
             self.optimizer.zero_grad()
             loss.backward()
 
-            # 可选：梯度裁剪，防止梯度爆炸 (特别是对 RNN/RWKV 类模型很重要)
+            # 可选：梯度裁剪，防止梯度爆炸
             torch.nn.utils.clip_grad_norm_(self.student.parameters(), max_norm=1.0)
 
             self.optimizer.step()
