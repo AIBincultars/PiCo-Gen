@@ -6,3 +6,6 @@
 *.xml
 *.mscz
 .idea
+/data
+!/data/.gitkeep
+!/data/tokenizer.py
