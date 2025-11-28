@@ -1,11 +1,12 @@
 *.pth
-/data/raw/*
-/data/preprocessed/*
-!/data/raw/.gitkeep
 *.abc
 *.xml
 *.mscz
 .idea
-/data
+/data/*
+!/data/
 !/data/.gitkeep
 !/data/tokenizer.py
+/data/logs
+/data/raw
+/data/preprocessed
