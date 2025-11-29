@@ -13,3 +13,6 @@
 /data/preprocessed
 /checkpoints
 /output/*
+/.idea
+/__pycache__
+.gitignore
