@@ -9,6 +9,7 @@ from transformers import GPT2Model, GPT2LMHeadModel, LlamaModel, LlamaForCausalL
 from samplings import top_p_sampling, top_k_sampling, temperature_sampling
 from tokenizers import Tokenizer
 
+
 class Patchilizer:
     def __init__(self, stream=PATCH_STREAM):
         self.stream = stream
@@ -60,8 +61,10 @@ class Patchilizer:
         for idx in patch:
             if idx == self.eos_token_id:
                 break
+            # --- [CRITICAL FIX] ---
             if idx < self.eos_token_id:
-                pass
+                continue  # 必须跳过特殊字符（如Padding），原代码写的是 pass，导致 \x00 被写入文件
+            # ----------------------
             bytes += chr(idx)
         return bytes
 
@@ -178,16 +181,26 @@ class Patchilizer:
                 tunebody_index = i
                 break
 
+        if tunebody_index is None:
+            tunebody_index = len(lines)
+
         metadata_lines = lines[: tunebody_index]
         tunebody_lines = lines[tunebody_index:]
 
         metadata_lines = [line + '\n' for line in metadata_lines]
+
         if self.stream:
-            if not abc_code.endswith('\n'):
-                tunebody_lines = [tunebody_lines[i] + '\n' for i in range(len(tunebody_lines) - 1)] + [
-                    tunebody_lines[-1]]
-            else:
-                tunebody_lines = [tunebody_lines[i] + '\n' for i in range(len(tunebody_lines))]
+            new_tunebody_lines = []
+            total_lines = len(tunebody_lines)
+            for idx, line in enumerate(tunebody_lines):
+                line = line.rstrip('\n')
+                if not line.startswith('[r:'):
+                    prefix = f'[r:{idx}/{total_lines - 1 - idx}]'
+                    new_line = prefix + line
+                else:
+                    new_line = line
+                new_tunebody_lines.append(new_line + '\n')
+            tunebody_lines = new_tunebody_lines
         else:
             tunebody_lines = [line + '\n' for line in tunebody_lines]
 
@@ -196,7 +209,6 @@ class Patchilizer:
 
         if add_special_patches:
             bos_patch = chr(self.bos_token_id) * (patch_size - 1) + chr(self.eos_token_id)
-
             metadata_patches = [bos_patch] + metadata_patches
 
         patches = metadata_patches + tunebody_patches
@@ -205,10 +217,8 @@ class Patchilizer:
         # encode to ids
         id_patches = []
         for patch in patches:
-            if len(patch) < PATCH_SIZE and patch[-1] != chr(self.eos_token_id):
-                id_patch = [ord(c) for c in patch]
-            else:
-                id_patch = [ord(c) for c in patch] + [self.special_token_id] * (patch_size - len(patch))
+            # 强制填充 padding，配合 patch2chars 的 continue 修复使用
+            id_patch = [ord(c) for c in patch] + [self.special_token_id] * (patch_size - len(patch))
             id_patches.append(id_patch)
 
         return id_patches

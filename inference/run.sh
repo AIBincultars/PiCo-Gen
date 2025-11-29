@@ -1,4 +1,8 @@
 python generate.py \
-  --weights_path ../checkpoints/llama_v1/weights_picogen_llama_v1_llama_lr0.0001_bz4_last.pth \
-  --backbone llama \
-  --prompt "X:1\nL:1/8\nM:4/4\nK:C\n[V:1] C2 E2 G2"
+  --weights_path ../checkpoints/llama_v1/weights_picogen_llama_v1_llama_lr0.0001_bz4_best.pth \
+  --num_samples 1 \
+  --max_length 1024 \
+  --temperature 1.0 \
+  --top_k 40 \
+  --top_p 0.95 \
+  --prompt "generate a song"

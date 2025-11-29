@@ -61,7 +61,7 @@ class Patchilizer:
             if idx == self.eos_token_id:
                 break
             if idx < self.eos_token_id:
-                pass
+                continue
             bytes += chr(idx)
         return bytes
         

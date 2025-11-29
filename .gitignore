@@ -12,3 +12,4 @@
 /data/raw
 /data/preprocessed
 /checkpoints
+/output/*
