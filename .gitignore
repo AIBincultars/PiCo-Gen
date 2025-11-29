@@ -8,11 +8,58 @@
 !/data/.gitkeep
 !/data/tokenizer.py
 !/data/dataset.py
+!/data/1_batch_xml2abc.py
+!/data/2_data_preprocess.py
+!/data/3_batch_abc2xml.py
+!/data/xml2abc.py
+!/data/abc2xml.py
+!/data/instruction_generator.py
 /data/logs
 /data/raw
 /data/preprocessed
 /checkpoints
 /output/*
-/.idea
-/__pycache__
-.gitignore
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# JetBrains IDE (PyCharm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+
+# Environment variables
+.env
+
+# Virtual Environments
+venv/
+env/
+ENV/

@@ -4,4 +4,4 @@ wandb==0.17.2
 abctoolkit==0.0.6
 samplings==0.1.7
 pyparsing==3.2.1
-gradio==5.17.1
+peft
